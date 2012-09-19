@@ -85,11 +85,36 @@ namespace AtividadePratica2
                 lf.SubItems.Add(textBox1.Text);
                 listView1.Items.Add(lf);
             }
-            
 
 
-           
-            
+
+
+            txtnome.Clear();
+            textBox1.Clear();
+            datatimerdata.Text = DateTime.Now.ToShortDateString();
+            cbGenero.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
+            {
+                ListViewItem remove = listView1.SelectedItems[i];
+                listView1.Items.Remove(remove);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
+            {
+                ListViewItem r = listView1.SelectedItems[i];
+                r.Group = listView1.Groups["terror"];
+                r.Text = txtnome.Text;
+                r.SubItems[1].Text = cbGenero.Text;
+                r.SubItems[2].Text = datatimerdata.Text;
+                r.SubItems[3].Text = textBox1.Text;
+            }
         }
 
     }
