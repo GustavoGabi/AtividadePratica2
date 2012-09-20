@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup17 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup18 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup19 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup20 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup21 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup22 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup23 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup24 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Ficção", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,15 +51,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.NomeFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GeneroFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DataFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LocalFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -95,6 +96,25 @@
             this.tabPage1.Size = new System.Drawing.Size(648, 298);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "..::Filmes::..";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button4.Location = new System.Drawing.Point(546, 157);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(96, 30);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Editar";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(10, 211);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(523, 26);
+            this.textBox1.TabIndex = 11;
             // 
             // button3
             // 
@@ -200,6 +220,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "..::Pesquisar Filme::..";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button2.Location = new System.Drawing.Point(277, 139);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 30);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Filtrar";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -220,31 +251,34 @@
             this.DataFilme,
             this.LocalFilme});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewGroup17.Header = "Comédia";
-            listViewGroup17.Name = "Comedia";
-            listViewGroup18.Header = "Ação";
-            listViewGroup18.Name = "acao";
-            listViewGroup19.Header = "Aventura";
-            listViewGroup19.Name = "aventura";
-            listViewGroup20.Header = "Romance";
-            listViewGroup20.Name = "romance";
-            listViewGroup21.Header = "Terror";
-            listViewGroup21.Name = "terror";
-            listViewGroup22.Header = "Documentário";
-            listViewGroup22.Name = "documentario";
-            listViewGroup23.Header = "Suspense";
-            listViewGroup23.Name = "suspense";
-            listViewGroup24.Header = "Infantil";
-            listViewGroup24.Name = "infantil";
+            listViewGroup1.Header = "Comédia";
+            listViewGroup1.Name = "Comedia";
+            listViewGroup2.Header = "Ação";
+            listViewGroup2.Name = "acao";
+            listViewGroup3.Header = "Aventura";
+            listViewGroup3.Name = "aventura";
+            listViewGroup4.Header = "Romance";
+            listViewGroup4.Name = "romance";
+            listViewGroup5.Header = "Terror";
+            listViewGroup5.Name = "terror";
+            listViewGroup6.Header = "Documentário";
+            listViewGroup6.Name = "documentario";
+            listViewGroup7.Header = "Suspense";
+            listViewGroup7.Name = "suspense";
+            listViewGroup8.Header = "Infantil";
+            listViewGroup8.Name = "infantil";
+            listViewGroup9.Header = "Ficção";
+            listViewGroup9.Name = "Ficção";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup17,
-            listViewGroup18,
-            listViewGroup19,
-            listViewGroup20,
-            listViewGroup21,
-            listViewGroup22,
-            listViewGroup23,
-            listViewGroup24});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(656, 167);
@@ -271,36 +305,6 @@
             // 
             this.LocalFilme.Text = "Local";
             this.LocalFilme.Width = 164;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(10, 211);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(523, 26);
-            this.textBox1.TabIndex = 11;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button2.Location = new System.Drawing.Point(277, 139);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 30);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Filtrar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button4.Location = new System.Drawing.Point(546, 157);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 30);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Editar";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
