@@ -11,6 +11,7 @@ namespace AtividadePratica2
 {
     class Filmes
     {
+      
         public string NomeFilme, generofilme, local;
         public string DATA;
         
