@@ -234,7 +234,7 @@ namespace AtividadePratica2
                 else if (cbGenero.Text == "Terror")
                 {
                     ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["suspense"];
+                    r.Group = listView1.Groups["terror"];
                     r.Text = txtnome.Text;
                     r.SubItems[1].Text = cbGenero.Text;
                     r.SubItems[2].Text = datatimerdata.Text;
