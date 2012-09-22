@@ -14,32 +14,8 @@ namespace AtividadePratica2
     {
         Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
 
-      //funcao que limpa todos os campos
-        
-
-     
-        public bool Verifica()
-        {
-            
-            return true;
-        }
-
-
-      
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        public void limpar()
-        {
-            txtnome.Clear();
-            cbGenero.Text = "";
-            datatimerdata.Text = DateTime.Now.ToShortDateString();
-            textBox1.Clear();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+      //Método usado para armazenamento dos filmes no listView1
+        public void Adicionar()
         {
             Filmes filme = new Filmes();
             if (txtnome.Text == "" || textBox1.Text == "" || cbGenero.Text == "")
@@ -60,14 +36,14 @@ namespace AtividadePratica2
                     if (Dicionario.ContainsKey(cbGenero.Text))
                     {
 
-                        //REFERENCIA PARA A LISTA CRIADA!
+                        //Esta lista de filmes 'r' é a referencia da lista 'lista' logo a baixo do código na condição else
                         List<Filmes> r = Dicionario[cbGenero.Text];
                         //ADICIONA NO LIST VIEW
                         l.Add(filme);
                     }
                     else
                     {
-                        //Cria nova lista de filmes
+                        //Cria nova lista de filmes porém nao armazena nenhum valor, servirá como referencia para a condição de verificação da chave do dicionário
                         List<Filmes> lista = new List<Filmes>();
                         //Adiciona filmes na lista l
                         filme.NomeFilme = txtnome.Text;
@@ -79,7 +55,8 @@ namespace AtividadePratica2
                         Dicionario.Add(cbGenero.Text, l);
                     }
                 }
-                //Cria a lista para adicionar grupos e items de determinado grupo!!
+                //Cria a lista para adicionar grupos e items de determinado grupo, dependendo do que ele selecionar no seu Genero ele entra nas condições e a condição verdadeira será o seu grupo..
+                //OBS: os grupos criados sempre será o nome do gênero que voce selecionar no seu ComboBox.
                 ListViewItem lf = new ListViewItem();
                 if (filme.generofilme == "Comédia")
                 {
@@ -174,6 +151,34 @@ namespace AtividadePratica2
                 limpar();
 
             }
+        
+        }
+
+        public bool Verifica()
+        {
+            
+            return true;
+        }
+
+
+      
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        //funcao que limpa todos os campos
+        public void limpar()
+        {
+            txtnome.Clear();
+            cbGenero.Text = "";
+            datatimerdata.Text = DateTime.Now.ToShortDateString();
+            textBox1.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Adicionar();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -189,14 +194,114 @@ namespace AtividadePratica2
         {
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
             {
-                ListViewItem r = listView1.SelectedItems[i];
-                r.Group = listView1.Groups["terror"];
-                r.Text = txtnome.Text;
-                r.SubItems[1].Text = cbGenero.Text;
-                r.SubItems[2].Text = datatimerdata.Text;
-                r.SubItems[3].Text = textBox1.Text;
+
+                if (cbGenero.Text == "Comédia")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["Comedia"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Ação")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["acao"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Aventura")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["aventura"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Romance")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["romance"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Terror")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["suspense"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Documentário")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["documentario"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Infantil")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["infantil"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Ficção - Científica")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["ficção"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                }
+                else if (cbGenero.Text == "Suspense")
+                {
+                    ListViewItem r = listView1.SelectedItems[i];
+                    r.Group = listView1.Groups["suspense"];
+                    r.Text = txtnome.Text;
+                    r.SubItems[1].Text = cbGenero.Text;
+                    r.SubItems[2].Text = datatimerdata.Text;
+                    r.SubItems[3].Text = textBox1.Text;
+                    
+                }
+   
+                //ListViewItem r = listView1.SelectedItems[i];
+                //r.Group = listView1.Groups["Terror"];
+                //r.Text = txtnome.Text;
+                //r.SubItems[1].Text = cbGenero.Text;
+                //r.SubItems[2].Text = datatimerdata.Text;
+                //r.SubItems[3].Text = textBox1.Text;
             }
         }
+        //Evento de double click quando ele clicar no item da lista duas vezes
+        //vai jogar todos os campos 
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                if (listView1.SelectedItems[0].Selected)
+                {
+                    textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
+                    cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
+                    datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
+                    txtnome.Text = listView1.FocusedItem.SubItems[0].Text;
+                }
+            }
+        }
+    
 
         private void Form1_Load(object sender, EventArgs e)
         {
