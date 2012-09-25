@@ -44,7 +44,6 @@ namespace AtividadePratica2
                     else
                     {
                         //Cria nova lista de filmes porém nao armazena nenhum valor, servirá como referencia para a condição de verificação da chave do dicionário
-                        List<Filmes> lista = new List<Filmes>();
                         //Adiciona filmes na lista l
                         filme.NomeFilme = txtnome.Text;
                         filme.generofilme = cbGenero.Text;
@@ -58,87 +57,16 @@ namespace AtividadePratica2
                 //Cria a lista para adicionar grupos e items de determinado grupo, dependendo do que ele selecionar no seu Genero ele entra nas condições e a condição verdadeira será o seu grupo..
                 //OBS: os grupos criados sempre será o nome do gênero que voce selecionar no seu ComboBox.
                 ListViewItem lf = new ListViewItem();
-                if (filme.generofilme == "Comédia")
-                {
-                    lf.Group = listView1.Groups["Comedia"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Ação")
-                {
-                    lf.Group = listView1.Groups["acao"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Aventura")
-                {
-                    lf.Group = listView1.Groups["aventura"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Romance")
-                {
-                    lf.Group = listView1.Groups["romance"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Terror")
-                {
-                    lf.Group = listView1.Groups["terror"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Documentário")
-                {
-                    lf.Group = listView1.Groups["documentario"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Infantil")
-                {
-                    lf.Group = listView1.Groups["infantil"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Ficção - Científica")
-                {
-                    lf.Group = listView1.Groups["ficção"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
-                else if (cbGenero.Text == "Suspense")
-                {
-                    lf.Group = listView1.Groups["suspense"];
-                    lf.Text = txtnome.Text;
-                    lf.SubItems.Add(cbGenero.Text);
-                    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                    lf.SubItems.Add(textBox1.Text);
-                    listView1.Items.Add(lf);
-                }
+                //if (filme.generofilme == "Comédia")
+                //{
+                lf.Group = listView1.Groups[filme.generofilme];
+                //lf.Group = listView1.Groups["Comedia"];
+                lf.Text = txtnome.Text;
+                lf.SubItems.Add(cbGenero.Text);
+                lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
+                lf.SubItems.Add(textBox1.Text);
+                listView1.Items.Add(lf);
+
                 foreach (KeyValuePair<string, List<Filmes>> J in Dicionario)
                 {
                     foreach (Filmes JJ in J.Value)
@@ -149,10 +77,10 @@ namespace AtividadePratica2
                 //Método criado para limpar campos.
 
                 limpar();
-
             }
-        
         }
+
+
 
         public bool Verifica()
         {
@@ -180,7 +108,7 @@ namespace AtividadePratica2
         {
             Adicionar();
         }
-
+        //BOTAO REMOVER
         private void button3_Click(object sender, EventArgs e)
         {
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
@@ -189,7 +117,7 @@ namespace AtividadePratica2
                 listView1.Items.Remove(remove);
             }
         }
-
+        //BOTAO EDITAR
         private void button4_Click(object sender, EventArgs e)
         {
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
@@ -197,12 +125,18 @@ namespace AtividadePratica2
 
                 if (cbGenero.Text == "Comédia")
                 {
+                    List<Filmes> l = Dicionario[cbGenero.Text];
+                    foreach (Filmes f in l)
+                    {
+                        
+                    }
                     ListViewItem r = listView1.SelectedItems[i];
                     r.Group = listView1.Groups["Comedia"];
                     r.Text = txtnome.Text;
                     r.SubItems[1].Text = cbGenero.Text;
                     r.SubItems[2].Text = datatimerdata.Text;
                     r.SubItems[3].Text = textBox1.Text;
+
                 }
                 else if (cbGenero.Text == "Ação")
                 {
@@ -225,7 +159,7 @@ namespace AtividadePratica2
                 else if (cbGenero.Text == "Romance")
                 {
                     ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["romance"];
+                    r.Group = listView1.Groups[cbGenero.SelectedIndex];
                     r.Text = txtnome.Text;
                     r.SubItems[1].Text = cbGenero.Text;
                     r.SubItems[2].Text = datatimerdata.Text;
