@@ -12,7 +12,12 @@ namespace AtividadePratica2
 
     public partial class Form1 : Form
     {
-        Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
+        
+         Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
+         List<Filmes> f = new List<Filmes>();
+         Filmes encontrado;
+         Filmes achado;
+
 
       //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
@@ -57,10 +62,8 @@ namespace AtividadePratica2
                 //Cria a lista para adicionar grupos e items de determinado grupo, dependendo do que ele selecionar no seu Genero ele entra nas condições e a condição verdadeira será o seu grupo..
                 //OBS: os grupos criados sempre será o nome do gênero que voce selecionar no seu ComboBox.
                 ListViewItem lf = new ListViewItem();
-                //if (filme.generofilme == "Comédia")
-                //{
+               
                 lf.Group = listView1.Groups[filme.generofilme];
-                //lf.Group = listView1.Groups["Comedia"];
                 lf.Text = txtnome.Text;
                 lf.SubItems.Add(cbGenero.Text);
                 lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
@@ -103,7 +106,7 @@ namespace AtividadePratica2
             datatimerdata.Text = DateTime.Now.ToShortDateString();
             textBox1.Clear();
         }
-
+        //BOTAO ADICIONAR
         private void button1_Click(object sender, EventArgs e)
         {
             Adicionar();
@@ -111,128 +114,79 @@ namespace AtividadePratica2
         //BOTAO REMOVER
         private void button3_Click(object sender, EventArgs e)
         {
+            //O laço vai percorrer a lista, e quando encontrar o item selecionado irá removelo do ListView
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
             {
                 ListViewItem remove = listView1.SelectedItems[i];
                 listView1.Items.Remove(remove);
             }
+            List<Filmes> L = Dicionario[cbGenero.Text];
+
+            foreach (Filmes F in L)
+            {
+                if (F.NomeFilme == txtnome.Text)
+                {
+                    achado = F;
+                    break;
+                }
+
+            }
+            L.Remove(achado);
+            MessageBox.Show("" + L, "", MessageBoxButtons.OK);
+            
         }
-        //BOTAO EDITAR
+        //BOTAO EDITAR 
         private void button4_Click(object sender, EventArgs e)
         {
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
             {
+                ListViewItem r = listView1.SelectedItems[i];
+                r.Group = listView1.Groups[cbGenero.SelectedIndex];
+                r.Text = txtnome.Text;
+                r.SubItems[1].Text = cbGenero.Text;
+                r.SubItems[2].Text = datatimerdata.Text;
+                r.SubItems[3].Text = textBox1.Text;
+            }
 
-                if (cbGenero.Text == "Comédia")
-                {
-                    List<Filmes> l = Dicionario[cbGenero.Text];
-                    foreach (Filmes f in l)
-                    {
-                        
-                    }
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["Comedia"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
+            if (cbGenero.Text != encontrado.generofilme)
+            {
 
-                }
-                else if (cbGenero.Text == "Ação")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["acao"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Aventura")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["aventura"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Romance")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups[cbGenero.SelectedIndex];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Terror")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["terror"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Documentário")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["documentario"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Infantil")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["infantil"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Ficção - Científica")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["ficção"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                }
-                else if (cbGenero.Text == "Suspense")
-                {
-                    ListViewItem r = listView1.SelectedItems[i];
-                    r.Group = listView1.Groups["suspense"];
-                    r.Text = txtnome.Text;
-                    r.SubItems[1].Text = cbGenero.Text;
-                    r.SubItems[2].Text = datatimerdata.Text;
-                    r.SubItems[3].Text = textBox1.Text;
-                    
-                }
-   
-                //ListViewItem r = listView1.SelectedItems[i];
-                //r.Group = listView1.Groups["Terror"];
-                //r.Text = txtnome.Text;
-                //r.SubItems[1].Text = cbGenero.Text;
-                //r.SubItems[2].Text = datatimerdata.Text;
-                //r.SubItems[3].Text = textBox1.Text;
+                encontrado.NomeFilme = txtnome.Text;
+                encontrado.generofilme = cbGenero.Text;
+                encontrado.DATA = datatimerdata.Text;
+                encontrado.local = textBox1.Text;
             }
         }
+         
         //Evento de double click quando ele clicar no item da lista duas vezes
         //vai jogar todos os campos 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count != 0)
             {
-                if (listView1.SelectedItems[0].Selected)
-                {
+                //if (listView1.SelectedItems[0].Selected)
+                //{
+
                     textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
                     cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
                     datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
                     txtnome.Text = listView1.FocusedItem.SubItems[0].Text;
-                }
+                    List<Filmes> l = Dicionario[cbGenero.Text];
+                    
+                    foreach (Filmes f in l)
+                    {
+                        if (f.NomeFilme == txtnome.Text)
+                        {
+                            encontrado = f;
+                            MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                        
+                    }
+                    
+                    //pega o genero, pega a lista referente aquele genero, achou ve o que voce quer. data
+                
+            
             }
         }
     
