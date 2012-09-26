@@ -17,6 +17,7 @@ namespace AtividadePratica2
          List<Filmes> f = new List<Filmes>();
          Filmes encontrado;
          Filmes achado;
+         
 
 
       //Método usado para armazenamento dos filmes no listView1
@@ -42,7 +43,7 @@ namespace AtividadePratica2
                     {
 
                         //Esta lista de filmes 'r' é a referencia da lista 'lista' logo a baixo do código na condição else
-                        List<Filmes> r = Dicionario[cbGenero.Text];
+                        List<Filmes> referencia = Dicionario[cbGenero.Text];
                         //ADICIONA NO LIST VIEW
                         l.Add(filme);
                     }
@@ -50,6 +51,7 @@ namespace AtividadePratica2
                     {
                         //Cria nova lista de filmes porém nao armazena nenhum valor, servirá como referencia para a condição de verificação da chave do dicionário
                         //Adiciona filmes na lista l
+                        List<Filmes> REF = new List<Filmes>();
                         filme.NomeFilme = txtnome.Text;
                         filme.generofilme = cbGenero.Text;
                         filme.DATA = datatimerdata.Value.ToShortDateString();
@@ -120,6 +122,7 @@ namespace AtividadePratica2
                 ListViewItem remove = listView1.SelectedItems[i];
                 listView1.Items.Remove(remove);
             }
+
             List<Filmes> L = Dicionario[cbGenero.Text];
 
             foreach (Filmes F in L)
@@ -138,6 +141,7 @@ namespace AtividadePratica2
         //BOTAO EDITAR 
         private void button4_Click(object sender, EventArgs e)
         {
+            //laço percorre o list view até o seu item selecionado, quando o item for selecionado, ele troca seus campos.
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
             {
                 ListViewItem r = listView1.SelectedItems[i];
@@ -148,7 +152,8 @@ namespace AtividadePratica2
                 r.SubItems[3].Text = textBox1.Text;
             }
 
-            if (cbGenero.Text != encontrado.generofilme)
+
+            if (cbGenero.Text == encontrado.generofilme)
             {
 
                 encontrado.NomeFilme = txtnome.Text;
@@ -156,6 +161,34 @@ namespace AtividadePratica2
                 encontrado.DATA = datatimerdata.Text;
                 encontrado.local = textBox1.Text;
             }
+            //else
+            //{
+            //    //ELE TEM QUE REMOVER.
+
+            //    List<Filmes> L = Dicionario[cbGenero.Text];
+
+            //    foreach (Filmes F in L)
+            //    {
+            //        if (F.NomeFilme == txtnome.Text)
+            //      + {
+            //            achado = F;
+            //            break;
+            //        }
+
+            //    }
+            //    L.Remove(achado);
+            //    MessageBox.Show("" + L, "", MessageBoxButtons.OK);
+            //    ListView lf;
+            //    lf.Group = listView1.Groups[achado.generofilme];
+            //    lf.Text = txtnome.Text;
+            //    lf.SubItems.Add(cbGenero.Text);
+            //    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
+            //    lf.SubItems.Add(textBox1.Text);
+            //    listView1.Items.Add(lf);
+
+            
+
+            //}
         }
          
         //Evento de double click quando ele clicar no item da lista duas vezes
@@ -164,9 +197,7 @@ namespace AtividadePratica2
         {
             if (listView1.SelectedItems.Count != 0)
             {
-                //if (listView1.SelectedItems[0].Selected)
-                //{
-
+              
                     textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
                     cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
                     datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
