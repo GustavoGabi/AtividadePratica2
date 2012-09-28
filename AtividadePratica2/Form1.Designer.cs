@@ -56,17 +56,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbd = new System.Windows.Forms.CheckBox();
+            this.cbl = new System.Windows.Forms.CheckBox();
+            this.cbg = new System.Windows.Forms.CheckBox();
+            this.cbnome = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -245,7 +244,6 @@
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.dateTimePicker2);
             this.tabPage2.Controls.Add(this.dateTimePicker1);
-            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.textBox3);
@@ -263,7 +261,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(138, 133);
+            this.label10.Location = new System.Drawing.Point(133, 150);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(22, 13);
             this.label10.TabIndex = 22;
@@ -299,7 +297,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(230, 150);
+            this.dateTimePicker2.Location = new System.Drawing.Point(161, 150);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(118, 20);
             this.dateTimePicker2.TabIndex = 19;
@@ -311,15 +309,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(118, 20);
             this.dateTimePicker1.TabIndex = 18;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(227, 133);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Data:";
             // 
             // label7
             // 
@@ -364,10 +353,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.cbd);
+            this.groupBox1.Controls.Add(this.cbl);
+            this.groupBox1.Controls.Add(this.cbg);
+            this.groupBox1.Controls.Add(this.cbnome);
             this.groupBox1.Location = new System.Drawing.Point(473, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(169, 124);
@@ -375,45 +364,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items de pesquisa:";
             // 
-            // checkBox3
+            // cbd
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(102, 88);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(49, 17);
-            this.checkBox3.TabIndex = 3;
-            this.checkBox3.Text = "Data";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbd.AutoSize = true;
+            this.cbd.Location = new System.Drawing.Point(102, 88);
+            this.cbd.Name = "cbd";
+            this.cbd.Size = new System.Drawing.Size(49, 17);
+            this.cbd.TabIndex = 3;
+            this.cbd.Text = "Data";
+            this.cbd.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // cbl
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 88);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(52, 17);
-            this.checkBox4.TabIndex = 2;
-            this.checkBox4.Text = "Local";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cbl.AutoSize = true;
+            this.cbl.Location = new System.Drawing.Point(6, 88);
+            this.cbl.Name = "cbl";
+            this.cbl.Size = new System.Drawing.Size(52, 17);
+            this.cbl.TabIndex = 2;
+            this.cbl.Text = "Local";
+            this.cbl.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbg
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(102, 38);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(61, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Gênero";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbg.AutoSize = true;
+            this.cbg.Location = new System.Drawing.Point(102, 38);
+            this.cbg.Name = "cbg";
+            this.cbg.Size = new System.Drawing.Size(61, 17);
+            this.cbg.TabIndex = 1;
+            this.cbg.Text = "Gênero";
+            this.cbg.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbnome
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 38);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(54, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Nome";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbnome.AutoSize = true;
+            this.cbnome.Location = new System.Drawing.Point(6, 38);
+            this.cbnome.Name = "cbnome";
+            this.cbnome.Size = new System.Drawing.Size(54, 17);
+            this.cbnome.TabIndex = 0;
+            this.cbnome.Text = "Nome";
+            this.cbnome.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -425,6 +414,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "Filtrar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -583,16 +573,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbd;
+        private System.Windows.Forms.CheckBox cbl;
+        private System.Windows.Forms.CheckBox cbg;
+        private System.Windows.Forms.CheckBox cbnome;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button5;

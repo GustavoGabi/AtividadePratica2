@@ -169,7 +169,7 @@ namespace AtividadePratica2
             {
                 //ELE TEM QUE REMOVER.
 
-
+                //l.Remove(encontrado);
                 List<Filmes> listEdit = new List<Filmes>();
                 encontrado.NomeFilme = txtnome.Text;
                 encontrado.generofilme = cbGenero.Text;
@@ -178,6 +178,8 @@ namespace AtividadePratica2
                 listEdit.Add(encontrado);
 
                 Dicionario.Add(cbGenero.Text, listEdit);
+                listEdit.Remove(encontrado);
+                
                 //ListView lf;
                 //lf.Group = listView1.Groups[achado.generofilme];
                 //lf.Text = txtnome.Text;
