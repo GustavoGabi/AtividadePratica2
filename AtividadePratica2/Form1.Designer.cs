@@ -74,6 +74,9 @@
             this.GeneroFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DataFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LocalFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -121,7 +124,7 @@
             this.button4.Location = new System.Drawing.Point(546, 157);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(96, 30);
-            this.button4.TabIndex = 12;
+            this.button4.TabIndex = 6;
             this.button4.Text = "Editar";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -132,7 +135,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 211);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(523, 21);
-            this.textBox1.TabIndex = 11;
+            this.textBox1.TabIndex = 3;
             // 
             // button3
             // 
@@ -141,7 +144,7 @@
             this.button3.Location = new System.Drawing.Point(546, 103);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 30);
-            this.button3.TabIndex = 10;
+            this.button3.TabIndex = 5;
             this.button3.Text = "Excluir";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -153,7 +156,7 @@
             this.button1.Location = new System.Drawing.Point(546, 52);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 30);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Adicionar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -185,7 +188,7 @@
             this.datatimerdata.Location = new System.Drawing.Point(10, 159);
             this.datatimerdata.Name = "datatimerdata";
             this.datatimerdata.Size = new System.Drawing.Size(523, 21);
-            this.datatimerdata.TabIndex = 4;
+            this.datatimerdata.TabIndex = 2;
             // 
             // cbGenero
             // 
@@ -204,7 +207,7 @@
             this.cbGenero.Location = new System.Drawing.Point(10, 105);
             this.cbGenero.Name = "cbGenero";
             this.cbGenero.Size = new System.Drawing.Size(523, 23);
-            this.cbGenero.TabIndex = 3;
+            this.cbGenero.TabIndex = 1;
             // 
             // label2
             // 
@@ -498,12 +501,43 @@
             this.LocalFilme.Text = "Local";
             this.LocalFilme.Width = 164;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(714, 34);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(123, 368);
+            this.listBox1.TabIndex = 2;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(843, 34);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(843, 90);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(969, 521);
+            this.ClientSize = new System.Drawing.Size(1140, 521);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
@@ -560,6 +594,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 

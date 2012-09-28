@@ -16,14 +16,15 @@ namespace AtividadePratica2
          Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
          List<Filmes> f = new List<Filmes>();
          Filmes encontrado;
-         Filmes achado;
+         List<Filmes> listEdit = new List<Filmes>();
+         List<Filmes> l = new List<Filmes>();
          
-
 
       //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
-        {
-            Filmes filme = new Filmes();
+         {
+             Filmes filme = new Filmes();
+            
             if (txtnome.Text == "" || textBox1.Text == "" || cbGenero.Text == "")
             {
                 MessageBox.Show("Preencha todos os campos", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -33,31 +34,30 @@ namespace AtividadePratica2
 
                 //usar um método do dicionario para verificar se a lista ja esta la!
                 //usar a chave do dicionario para esta verificação!!!!
-                List<Filmes> l = new List<Filmes>();
+                //List<Filmes> lista = new List<Filmes>();
                 if (txtnome.Text != "" || cbGenero.Text != "")
                 {
-
-                    //l.Add(filme);
+                    filme.NomeFilme = txtnome.Text;
+                    filme.generofilme = cbGenero.Text;
+                    filme.DATA = datatimerdata.Text;
+                    filme.local = textBox1.Text;
 
                     if (Dicionario.ContainsKey(cbGenero.Text))
                     {
 
                         //Esta lista de filmes 'r' é a referencia da lista 'lista' logo a baixo do código na condição else
-                        List<Filmes> referencia = Dicionario[cbGenero.Text];
+                        List<Filmes> l = Dicionario[cbGenero.Text];
                         //ADICIONA NO LIST VIEW
                         l.Add(filme);
                     }
                     else
                     {
-                        //Cria nova lista de filmes porém nao armazena nenhum valor, servirá como referencia para a condição de verificação da chave do dicionário
-                        //Adiciona filmes na lista l
-                        List<Filmes> REF = new List<Filmes>();
-                        filme.NomeFilme = txtnome.Text;
-                        filme.generofilme = cbGenero.Text;
-                        filme.DATA = datatimerdata.Value.ToShortDateString();
-                        filme.local = textBox1.Text;
+                        //Cria nova lista de filmes, servirá como referencia para a condição de verificação da chave do dicionário
+                        //Adiciona filmes na lista 
+                        List<Filmes> l = new List<Filmes>();
+                      //ele adiciona na lista de filmes
                         l.Add(filme);
-                        //Adiciona no dicionario a chave cbGenero e a lista
+                        ////Adiciona no dicionario a chave cbGenero e a lista
                         Dicionario.Add(cbGenero.Text, l);
                     }
                 }
@@ -72,13 +72,13 @@ namespace AtividadePratica2
                 lf.SubItems.Add(textBox1.Text);
                 listView1.Items.Add(lf);
 
-                foreach (KeyValuePair<string, List<Filmes>> J in Dicionario)
-                {
-                    foreach (Filmes JJ in J.Value)
-                    {
-                        MessageBox.Show("" + filme.NomeFilme + " " + filme.generofilme + " " + filme.local + " " + filme.DATA + " " + J.Key, " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                //foreach (KeyValuePair<string, List<Filmes>> J in Dicionario)
+                //{
+                //    foreach (Filmes JJ in J.Value)
+                //    {
+                //        MessageBox.Show("" + filme.NomeFilme + " " + filme.generofilme + " " + filme.local + " " + filme.DATA + " " + J.Key, " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //}
                 //Método criado para limpar campos.
 
                 limpar();
@@ -121,23 +121,27 @@ namespace AtividadePratica2
             {
                 ListViewItem remove = listView1.SelectedItems[i];
                 listView1.Items.Remove(remove);
+                
+                List<Filmes> L = Dicionario[remove.SubItems[1].Text];
+                L.Remove(encontrado);
+            //foreach (Filmes F in L)
+            //{
+            //    if (F.NomeFilme == txtnome.Text)
+            //    {
+            //        encontrado = F;
+            //        break;
+            //    }
+
+            //}
+            //L.Remove(encontrado);
+            //MessageBox.Show("" + L, "", MessageBoxButtons.OK);
+                
             }
 
-            List<Filmes> L = Dicionario[cbGenero.Text];
-
-            foreach (Filmes F in L)
-            {
-                if (F.NomeFilme == txtnome.Text)
-                {
-                    achado = F;
-                    break;
-                }
-
-            }
-            L.Remove(achado);
-            MessageBox.Show("" + L, "", MessageBoxButtons.OK);
+            
             
         }
+
         //BOTAO EDITAR 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -157,38 +161,33 @@ namespace AtividadePratica2
             {
 
                 encontrado.NomeFilme = txtnome.Text;
+                encontrado.DATA = datatimerdata.Text;
+                encontrado.local = textBox1.Text;
+                
+            }
+            else
+            {
+                //ELE TEM QUE REMOVER.
+
+
+                List<Filmes> listEdit = new List<Filmes>();
+                encontrado.NomeFilme = txtnome.Text;
                 encontrado.generofilme = cbGenero.Text;
                 encontrado.DATA = datatimerdata.Text;
                 encontrado.local = textBox1.Text;
+                listEdit.Add(encontrado);
+
+                Dicionario.Add(cbGenero.Text, listEdit);
+                //ListView lf;
+                //lf.Group = listView1.Groups[achado.generofilme];
+                //lf.Text = txtnome.Text;
+                //lf.SubItems.Add(cbGenero.Text);
+                //lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
+                //lf.SubItems.Add(textBox1.Text);
+                //listView1.Items.Add(lf);
+                //}
             }
-            //else
-            //{
-            //    //ELE TEM QUE REMOVER.
 
-            //    List<Filmes> L = Dicionario[cbGenero.Text];
-
-            //    foreach (Filmes F in L)
-            //    {
-            //        if (F.NomeFilme == txtnome.Text)
-            //      + {
-            //            achado = F;
-            //            break;
-            //        }
-
-            //    }
-            //    L.Remove(achado);
-            //    MessageBox.Show("" + L, "", MessageBoxButtons.OK);
-            //    ListView lf;
-            //    lf.Group = listView1.Groups[achado.generofilme];
-            //    lf.Text = txtnome.Text;
-            //    lf.SubItems.Add(cbGenero.Text);
-            //    lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-            //    lf.SubItems.Add(textBox1.Text);
-            //    listView1.Items.Add(lf);
-
-            
-
-            //}
         }
          
         //Evento de double click quando ele clicar no item da lista duas vezes
@@ -226,6 +225,25 @@ namespace AtividadePratica2
         {
             //ligando os grupos do listView aos valores do combobox
             //cbGenero.DataSource = listView1.Groups;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            foreach (List<Filmes> pesq in Dicionario.Values)
+            {
+                foreach (Filmes pesqlist in pesq)
+                {
+                    listBox1.Items.Add(pesqlist.NomeFilme);
+                    listBox1.Items.Add(pesqlist.generofilme);
+                    listBox1.Items.Add(pesqlist.DATA);
+                    listBox1.Items.Add(pesqlist.local);
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
         }
 
     }
