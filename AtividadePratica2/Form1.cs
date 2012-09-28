@@ -18,6 +18,7 @@ namespace AtividadePratica2
          Filmes encontrado;
          List<Filmes> listEdit = new List<Filmes>();
          List<Filmes> l = new List<Filmes>();
+         List<Filmes> lp = new List<Filmes>();
          
 
       //Método usado para armazenamento dos filmes no listView1
@@ -72,13 +73,6 @@ namespace AtividadePratica2
                 lf.SubItems.Add(textBox1.Text);
                 listView1.Items.Add(lf);
 
-                //foreach (KeyValuePair<string, List<Filmes>> J in Dicionario)
-                //{
-                //    foreach (Filmes JJ in J.Value)
-                //    {
-                //        MessageBox.Show("" + filme.NomeFilme + " " + filme.generofilme + " " + filme.local + " " + filme.DATA + " " + J.Key, " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //}
                 //Método criado para limpar campos.
 
                 limpar();
@@ -124,22 +118,9 @@ namespace AtividadePratica2
                 
                 List<Filmes> L = Dicionario[remove.SubItems[1].Text];
                 L.Remove(encontrado);
-            //foreach (Filmes F in L)
-            //{
-            //    if (F.NomeFilme == txtnome.Text)
-            //    {
-            //        encontrado = F;
-            //        break;
-            //    }
-
-            //}
-            //L.Remove(encontrado);
-            //MessageBox.Show("" + L, "", MessageBoxButtons.OK);
-                
+                       
             }
 
-            
-            
         }
 
         //BOTAO EDITAR 
@@ -180,20 +161,12 @@ namespace AtividadePratica2
                 Dicionario.Add(cbGenero.Text, listEdit);
                 listEdit.Remove(encontrado);
                 
-                //ListView lf;
-                //lf.Group = listView1.Groups[achado.generofilme];
-                //lf.Text = txtnome.Text;
-                //lf.SubItems.Add(cbGenero.Text);
-                //lf.SubItems.Add(datatimerdata.Value.ToShortDateString());
-                //lf.SubItems.Add(textBox1.Text);
-                //listView1.Items.Add(lf);
-                //}
             }
 
         }
          
         //Evento de double click quando ele clicar no item da lista duas vezes
-        //vai jogar todos os campos 
+        //vai jogar todos os valores do objeto dentro dos campos.
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count != 0)
@@ -246,6 +219,28 @@ namespace AtividadePratica2
         private void button6_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (cbg.Checked)
+            {
+                if (cbgenerop.Text != "")
+                {
+                    List<Filmes> nome = Dicionario[cbgenerop.Text];
+
+                    foreach (Filmes o in nome)
+                    {
+                        if (o.generofilme == cbgenerop.Text)
+                        {
+                            encontrado = o;
+                            MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+
+                    }
+                }
+            }
         }
 
     }

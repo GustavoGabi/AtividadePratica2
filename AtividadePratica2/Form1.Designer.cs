@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Ficção - Científica", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup13 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup14 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup15 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup16 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup17 = new System.Windows.Forms.ListViewGroup("Ficção - Científica", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup18 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
@@ -52,15 +52,15 @@
             this.txtnome = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbgenerop = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataatep = new System.Windows.Forms.DateTimePicker();
+            this.datap = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtlocalp = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtnomep = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbd = new System.Windows.Forms.CheckBox();
             this.cbl = new System.Windows.Forms.CheckBox();
@@ -240,15 +240,15 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.cbgenerop);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.dateTimePicker2);
-            this.tabPage2.Controls.Add(this.dateTimePicker1);
+            this.tabPage2.Controls.Add(this.dataatep);
+            this.tabPage2.Controls.Add(this.datap);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.txtlocalp);
             this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.txtnomep);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -267,10 +267,10 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "até";
             // 
-            // comboBox1
+            // cbgenerop
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbgenerop.FormattingEnabled = true;
+            this.cbgenerop.Items.AddRange(new object[] {
             "Ação",
             "Aventura",
             "Comédia",
@@ -280,10 +280,10 @@
             "Suspense",
             "Ficção - Científica",
             "Documentário"});
-            this.comboBox1.Location = new System.Drawing.Point(9, 68);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(447, 21);
-            this.comboBox1.TabIndex = 21;
+            this.cbgenerop.Location = new System.Drawing.Point(9, 68);
+            this.cbgenerop.Name = "cbgenerop";
+            this.cbgenerop.Size = new System.Drawing.Size(447, 21);
+            this.cbgenerop.TabIndex = 21;
             // 
             // label9
             // 
@@ -294,21 +294,21 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "Gênero:";
             // 
-            // dateTimePicker2
+            // dataatep
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(161, 150);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(118, 20);
-            this.dateTimePicker2.TabIndex = 19;
+            this.dataatep.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dataatep.Location = new System.Drawing.Point(161, 150);
+            this.dataatep.Name = "dataatep";
+            this.dataatep.Size = new System.Drawing.Size(118, 20);
+            this.dataatep.TabIndex = 19;
             // 
-            // dateTimePicker1
+            // datap
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 150);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(118, 20);
-            this.dateTimePicker1.TabIndex = 18;
+            this.datap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datap.Location = new System.Drawing.Point(9, 150);
+            this.datap.Name = "datap";
+            this.datap.Size = new System.Drawing.Size(118, 20);
+            this.datap.TabIndex = 18;
             // 
             // label7
             // 
@@ -328,12 +328,12 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Local:";
             // 
-            // textBox3
+            // txtlocalp
             // 
-            this.textBox3.Location = new System.Drawing.Point(9, 110);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(448, 20);
-            this.textBox3.TabIndex = 14;
+            this.txtlocalp.Location = new System.Drawing.Point(9, 110);
+            this.txtlocalp.Name = "txtlocalp";
+            this.txtlocalp.Size = new System.Drawing.Size(448, 20);
+            this.txtlocalp.TabIndex = 14;
             // 
             // label5
             // 
@@ -344,12 +344,12 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Nome do filme:";
             // 
-            // textBox2
+            // txtnomep
             // 
-            this.textBox2.Location = new System.Drawing.Point(9, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(448, 20);
-            this.textBox2.TabIndex = 12;
+            this.txtnomep.Location = new System.Drawing.Point(9, 25);
+            this.txtnomep.Name = "txtnomep";
+            this.txtnomep.Size = new System.Drawing.Size(448, 20);
+            this.txtnomep.TabIndex = 12;
             // 
             // groupBox1
             // 
@@ -435,34 +435,34 @@
             this.DataFilme,
             this.LocalFilme});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewGroup1.Header = "Ação";
-            listViewGroup1.Name = "Ação";
-            listViewGroup2.Header = "Aventura";
-            listViewGroup2.Name = "Aventura";
-            listViewGroup3.Header = "Comédia";
-            listViewGroup3.Name = "Comédia";
-            listViewGroup4.Header = "Romance";
-            listViewGroup4.Name = "Romance";
-            listViewGroup5.Header = "Infantil";
-            listViewGroup5.Name = "Infantil";
-            listViewGroup6.Header = "Terror";
-            listViewGroup6.Name = "Terror";
-            listViewGroup7.Header = "Suspense";
-            listViewGroup7.Name = "Suspense";
-            listViewGroup8.Header = "Ficção - Científica";
-            listViewGroup8.Name = "Ficção - Científica";
-            listViewGroup9.Header = "Documentário";
-            listViewGroup9.Name = "Documentário";
+            listViewGroup10.Header = "Ação";
+            listViewGroup10.Name = "Ação";
+            listViewGroup11.Header = "Aventura";
+            listViewGroup11.Name = "Aventura";
+            listViewGroup12.Header = "Comédia";
+            listViewGroup12.Name = "Comédia";
+            listViewGroup13.Header = "Romance";
+            listViewGroup13.Name = "Romance";
+            listViewGroup14.Header = "Infantil";
+            listViewGroup14.Name = "Infantil";
+            listViewGroup15.Header = "Terror";
+            listViewGroup15.Name = "Terror";
+            listViewGroup16.Header = "Suspense";
+            listViewGroup16.Name = "Suspense";
+            listViewGroup17.Header = "Ficção - Científica";
+            listViewGroup17.Name = "Ficção - Científica";
+            listViewGroup18.Header = "Documentário";
+            listViewGroup18.Name = "Documentário";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8,
-            listViewGroup9});
+            listViewGroup10,
+            listViewGroup11,
+            listViewGroup12,
+            listViewGroup13,
+            listViewGroup14,
+            listViewGroup15,
+            listViewGroup16,
+            listViewGroup17,
+            listViewGroup18});
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(656, 167);
@@ -569,19 +569,19 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtlocalp;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtnomep;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbd;
         private System.Windows.Forms.CheckBox cbl;
         private System.Windows.Forms.CheckBox cbg;
         private System.Windows.Forms.CheckBox cbnome;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbgenerop;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dataatep;
+        private System.Windows.Forms.DateTimePicker datap;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button5;
