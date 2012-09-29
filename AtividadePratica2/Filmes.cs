@@ -13,7 +13,7 @@ namespace AtividadePratica2
     {
       
         public string NomeFilme, generofilme, local;
-        public string DATA;
+        public  DateTime DATA;
 
 
     }

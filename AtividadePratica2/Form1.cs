@@ -40,7 +40,7 @@ namespace AtividadePratica2
                 {
                     filme.NomeFilme = txtnome.Text;
                     filme.generofilme = cbGenero.Text;
-                    filme.DATA = datatimerdata.Text;
+                    filme.DATA = datatimerdata.Value;
                     filme.local = textBox1.Text;
 
                     if (Dicionario.ContainsKey(cbGenero.Text))
@@ -142,7 +142,7 @@ namespace AtividadePratica2
             {
 
                 encontrado.NomeFilme = txtnome.Text;
-                encontrado.DATA = datatimerdata.Text;
+                encontrado.DATA = datatimerdata.Value;
                 encontrado.local = textBox1.Text;
 
             }
@@ -154,7 +154,7 @@ namespace AtividadePratica2
                 List<Filmes> listEdit = new List<Filmes>();
                 encontrado.NomeFilme = txtnome.Text;
                 encontrado.generofilme = cbGenero.Text;
-                encontrado.DATA = datatimerdata.Text;
+                encontrado.DATA = datatimerdata.Value;
                 encontrado.local = textBox1.Text;
                 listEdit.Add(encontrado);
 
@@ -264,8 +264,22 @@ namespace AtividadePratica2
                         }
                         if (cbl.Checked && txtlocalp.Text != pesquisaE.local)
                         {
-
+                            lp.Remove(pesquisaE);
                         }
+                        if (cbd.Checked && datap.Value.Date < pesquisaE.DATA)
+                        {
+                            lp.Remove(pesquisaE);
+                        }
+                    }
+                    foreach (Filmes u in lp)
+                    {
+                        ListViewItem exibir = new ListViewItem();
+                        exibir.Group = listView1.Groups[u.generofilme];
+                        exibir.Text = u.NomeFilme;
+                        exibir.SubItems.Add(u.generofilme);
+                        exibir.SubItems.Add(u.DATA.ToShortDateString());
+                        exibir.SubItems.Add(u.local);
+                        listView1.Items.Add(exibir);
 
                     }
                 }
@@ -287,7 +301,7 @@ namespace AtividadePratica2
                         LISTA = new ListViewItem();
                         LISTA.Group = listView1.Groups[l[i].generofilme];
                         LISTA.Text = l[i].NomeFilme;
-                        LISTA.SubItems.Add(l[i].DATA);
+                        LISTA.SubItems.Add(l[i].DATA.ToShortDateString());
                         LISTA.SubItems.Add(l[i].local);
                         listView1.Items.Add(LISTA);
 
