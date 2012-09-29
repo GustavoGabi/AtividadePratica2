@@ -12,20 +12,20 @@ namespace AtividadePratica2
 
     public partial class Form1 : Form
     {
-        
-         Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
-         List<Filmes> f = new List<Filmes>();
-         Filmes encontrado;
-         List<Filmes> listEdit = new List<Filmes>();
-         List<Filmes> l = new List<Filmes>();
-         List<Filmes> lp = new List<Filmes>();
-         
 
-      //Método usado para armazenamento dos filmes no listView1
+        Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
+        List<Filmes> f = new List<Filmes>();
+        Filmes encontrado;
+        List<Filmes> listEdit = new List<Filmes>();
+        List<Filmes> l = new List<Filmes>();
+        List<Filmes> lp = new List<Filmes>();
+
+
+        //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
-         {
-             Filmes filme = new Filmes();
-            
+        {
+            Filmes filme = new Filmes();
+
             if (txtnome.Text == "" || textBox1.Text == "" || cbGenero.Text == "")
             {
                 MessageBox.Show("Preencha todos os campos", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -56,7 +56,7 @@ namespace AtividadePratica2
                         //Cria nova lista de filmes, servirá como referencia para a condição de verificação da chave do dicionário
                         //Adiciona filmes na lista 
                         List<Filmes> l = new List<Filmes>();
-                      //ele adiciona na lista de filmes
+                        //ele adiciona na lista de filmes
                         l.Add(filme);
                         ////Adiciona no dicionario a chave cbGenero e a lista
                         Dicionario.Add(cbGenero.Text, l);
@@ -65,7 +65,7 @@ namespace AtividadePratica2
                 //Cria a lista para adicionar grupos e items de determinado grupo, dependendo do que ele selecionar no seu Genero ele entra nas condições e a condição verdadeira será o seu grupo..
                 //OBS: os grupos criados sempre será o nome do gênero que voce selecionar no seu ComboBox.
                 ListViewItem lf = new ListViewItem();
-               
+
                 lf.Group = listView1.Groups[filme.generofilme];
                 lf.Text = txtnome.Text;
                 lf.SubItems.Add(cbGenero.Text);
@@ -83,12 +83,12 @@ namespace AtividadePratica2
 
         public bool Verifica()
         {
-            
+
             return true;
         }
 
 
-      
+
         public Form1()
         {
             InitializeComponent();
@@ -115,10 +115,10 @@ namespace AtividadePratica2
             {
                 ListViewItem remove = listView1.SelectedItems[i];
                 listView1.Items.Remove(remove);
-                
+
                 List<Filmes> L = Dicionario[remove.SubItems[1].Text];
                 L.Remove(encontrado);
-                       
+
             }
 
         }
@@ -144,7 +144,7 @@ namespace AtividadePratica2
                 encontrado.NomeFilme = txtnome.Text;
                 encontrado.DATA = datatimerdata.Text;
                 encontrado.local = textBox1.Text;
-                
+
             }
             else
             {
@@ -160,47 +160,50 @@ namespace AtividadePratica2
 
                 Dicionario.Add(cbGenero.Text, listEdit);
                 listEdit.Remove(encontrado);
-                
+
             }
 
         }
-         
+
         //Evento de double click quando ele clicar no item da lista duas vezes
         //vai jogar todos os valores do objeto dentro dos campos.
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count != 0)
             {
-              
-                    textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
-                    cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
-                    datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
-                    txtnome.Text = listView1.FocusedItem.SubItems[0].Text;
-                    List<Filmes> l = Dicionario[cbGenero.Text];
-                    
-                    foreach (Filmes f in l)
+
+                textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
+                cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
+                datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
+                txtnome.Text = listView1.FocusedItem.SubItems[0].Text;
+                List<Filmes> l = Dicionario[cbGenero.Text];
+
+                foreach (Filmes f in l)
+                {
+                    if (f.NomeFilme == txtnome.Text)
                     {
-                        if (f.NomeFilme == txtnome.Text)
-                        {
-                            encontrado = f;
-                            MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            break;
-                        }
-                        
+                        encontrado = f;
+                        MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
                     }
-                    
-                    //pega o genero, pega a lista referente aquele genero, achou ve o que voce quer. data
-                
-            
+
+                }
+
+                //pega o genero, pega a lista referente aquele genero, achou ve o que voce quer. data
+
+
             }
         }
-    
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //ligando os grupos do listView aos valores do combobox
             //cbGenero.DataSource = listView1.Groups;
         }
+
+
+
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -223,25 +226,32 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (cbg.Checked)
+            if (cbg.Checked == false && cbnome.Checked == false && cbl.Checked == false && cbd.Checked == false)
             {
-                if (cbgenerop.Text != "")
+                MessageBox.Show("Selecione um método de pesquisa", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (cbg.Checked)
                 {
-                    List<Filmes> nome = Dicionario[cbgenerop.Text];
-
-                    foreach (Filmes o in nome)
+                    if (Dicionario.ContainsKey(cbgenerop.Text))
                     {
-                        if (o.generofilme == cbgenerop.Text)
+                        string cobaia = cbgenerop.Text;
+                        List<Filmes> lis = Dicionario[cobaia];
+                        //lp.AddRange(lis);
+                        foreach (List<Filmes> l in Dicionario.Values)
                         {
-                            encontrado = o;
-                            MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            break;
+                            lp.AddRange(l);
                         }
+                    }
+                    else
+                    {
+                        //mensagem a ser apresentada se nao possui filmes com certo genero.
+                        MessageBox.Show("Nao existe filme com este genero", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
             }
         }
-
     }
 }
