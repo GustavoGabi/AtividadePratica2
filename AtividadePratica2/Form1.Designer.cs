@@ -28,15 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup28 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup29 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup30 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup31 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup32 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup33 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup34 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup35 = new System.Windows.Forms.ListViewGroup("Ficção - Científica", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup36 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup37 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup38 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup39 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup40 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup41 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup42 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup43 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup44 = new System.Windows.Forms.ListViewGroup("Ficção - Científica", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup45 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup46 = new System.Windows.Forms.ListViewGroup("Ação", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup47 = new System.Windows.Forms.ListViewGroup("Aventura", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup48 = new System.Windows.Forms.ListViewGroup("Comédia", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup49 = new System.Windows.Forms.ListViewGroup("Romance", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup50 = new System.Windows.Forms.ListViewGroup("Infantil", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup51 = new System.Windows.Forms.ListViewGroup("Terror", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup52 = new System.Windows.Forms.ListViewGroup("Suspense", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup53 = new System.Windows.Forms.ListViewGroup("Ficção - Científica", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup54 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
@@ -51,6 +60,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.cbgenerop = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -67,27 +77,19 @@
             this.cbg = new System.Windows.Forms.CheckBox();
             this.cbnome = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.NomeFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.GeneroFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DataFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LocalFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.NomeFilmeP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NomeGeneroP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NomeDataP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NomeLocalP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -97,7 +99,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(656, 324);
+            this.tabControl1.Size = new System.Drawing.Size(679, 497);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -105,6 +107,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.button3);
@@ -120,7 +123,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(648, 298);
+            this.tabPage1.Size = new System.Drawing.Size(671, 471);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "..::Filmes::..";
             // 
@@ -247,6 +250,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.listView2);
+            this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.cbgenerop);
             this.tabPage2.Controls.Add(this.label9);
@@ -262,9 +267,21 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(648, 298);
+            this.tabPage2.Size = new System.Drawing.Size(671, 471);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "..::Pesquisar Filme::..";
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button7.Location = new System.Drawing.Point(561, 141);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(96, 30);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "Limpar";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label10
             // 
@@ -416,24 +433,13 @@
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button2.Location = new System.Drawing.Point(546, 234);
+            this.button2.Location = new System.Drawing.Point(459, 141);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 30);
             this.button2.TabIndex = 10;
             this.button2.Text = "Filtrar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Controls.Add(this.listView1);
-            this.panel1.Location = new System.Drawing.Point(12, 342);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(656, 167);
-            this.panel1.TabIndex = 1;
             // 
             // listView1
             // 
@@ -442,38 +448,37 @@
             this.GeneroFilme,
             this.DataFilme,
             this.LocalFilme});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            listViewGroup28.Header = "Ação";
-            listViewGroup28.Name = "Ação";
-            listViewGroup29.Header = "Aventura";
-            listViewGroup29.Name = "Aventura";
-            listViewGroup30.Header = "Comédia";
-            listViewGroup30.Name = "Comédia";
-            listViewGroup31.Header = "Romance";
-            listViewGroup31.Name = "Romance";
-            listViewGroup32.Header = "Infantil";
-            listViewGroup32.Name = "Infantil";
-            listViewGroup33.Header = "Terror";
-            listViewGroup33.Name = "Terror";
-            listViewGroup34.Header = "Suspense";
-            listViewGroup34.Name = "Suspense";
-            listViewGroup35.Header = "Ficção - Científica";
-            listViewGroup35.Name = "Ficção - Científica";
-            listViewGroup36.Header = "Documentário";
-            listViewGroup36.Name = "Documentário";
+            listViewGroup37.Header = "Ação";
+            listViewGroup37.Name = "Ação";
+            listViewGroup38.Header = "Aventura";
+            listViewGroup38.Name = "Aventura";
+            listViewGroup39.Header = "Comédia";
+            listViewGroup39.Name = "Comédia";
+            listViewGroup40.Header = "Romance";
+            listViewGroup40.Name = "Romance";
+            listViewGroup41.Header = "Infantil";
+            listViewGroup41.Name = "Infantil";
+            listViewGroup42.Header = "Terror";
+            listViewGroup42.Name = "Terror";
+            listViewGroup43.Header = "Suspense";
+            listViewGroup43.Name = "Suspense";
+            listViewGroup44.Header = "Ficção - Científica";
+            listViewGroup44.Name = "Ficção - Científica";
+            listViewGroup45.Header = "Documentário";
+            listViewGroup45.Name = "Documentário";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup28,
-            listViewGroup29,
-            listViewGroup30,
-            listViewGroup31,
-            listViewGroup32,
-            listViewGroup33,
-            listViewGroup34,
-            listViewGroup35,
-            listViewGroup36});
-            this.listView1.Location = new System.Drawing.Point(0, 0);
+            listViewGroup37,
+            listViewGroup38,
+            listViewGroup39,
+            listViewGroup40,
+            listViewGroup41,
+            listViewGroup42,
+            listViewGroup43,
+            listViewGroup44,
+            listViewGroup45});
+            this.listView1.Location = new System.Drawing.Point(9, 238);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(656, 167);
+            this.listView1.Size = new System.Drawing.Size(656, 227);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -499,91 +504,72 @@
             this.LocalFilme.Text = "Local";
             this.LocalFilme.Width = 164;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(791, 34);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(123, 95);
-            this.listBox1.TabIndex = 2;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(920, 34);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 25);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(920, 103);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 26);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // listView2
             // 
             this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NomeFilmeP,
-            this.NomeGeneroP,
             this.NomeDataP,
             this.NomeLocalP});
-            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView2.Location = new System.Drawing.Point(0, 0);
+            listViewGroup46.Header = "Ação";
+            listViewGroup46.Name = "Ação";
+            listViewGroup47.Header = "Aventura";
+            listViewGroup47.Name = "Aventura";
+            listViewGroup48.Header = "Comédia";
+            listViewGroup48.Name = "Comédia";
+            listViewGroup49.Header = "Romance";
+            listViewGroup49.Name = "Romance";
+            listViewGroup50.Header = "Infantil";
+            listViewGroup50.Name = "Infantil";
+            listViewGroup51.Header = "Terror";
+            listViewGroup51.Name = "Terror";
+            listViewGroup52.Header = "Suspense";
+            listViewGroup52.Name = "Suspense";
+            listViewGroup53.Header = "Ficção - Científica";
+            listViewGroup53.Name = "Ficção - Científica";
+            listViewGroup54.Header = "Documentário";
+            listViewGroup54.Name = "Documentário";
+            this.listView2.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup46,
+            listViewGroup47,
+            listViewGroup48,
+            listViewGroup49,
+            listViewGroup50,
+            listViewGroup51,
+            listViewGroup52,
+            listViewGroup53,
+            listViewGroup54});
+            this.listView2.Location = new System.Drawing.Point(9, 199);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(493, 170);
-            this.listView2.TabIndex = 5;
+            this.listView2.Size = new System.Drawing.Size(648, 266);
+            this.listView2.TabIndex = 24;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.listView2);
-            this.panel2.Location = new System.Drawing.Point(674, 342);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(493, 170);
-            this.panel2.TabIndex = 6;
             // 
             // NomeFilmeP
             // 
             this.NomeFilmeP.Text = "Nome";
-            // 
-            // NomeGeneroP
-            // 
-            this.NomeGeneroP.Text = "Gênero";
+            this.NomeFilmeP.Width = 242;
             // 
             // NomeDataP
             // 
             this.NomeDataP.Text = "Data";
+            this.NomeDataP.Width = 196;
             // 
             // NomeLocalP
             // 
             this.NomeLocalP.Text = "Local";
+            this.NomeLocalP.Width = 205;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1179, 521);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(706, 521);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -591,8 +577,6 @@
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -609,7 +593,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtnome;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
@@ -635,15 +618,11 @@
         private System.Windows.Forms.DateTimePicker dataatep;
         private System.Windows.Forms.DateTimePicker datap;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ColumnHeader NomeFilmeP;
-        private System.Windows.Forms.ColumnHeader NomeGeneroP;
         private System.Windows.Forms.ColumnHeader NomeDataP;
         private System.Windows.Forms.ColumnHeader NomeLocalP;
-        private System.Windows.Forms.Panel panel2;
     }
 }
 

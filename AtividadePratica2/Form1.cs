@@ -15,7 +15,7 @@ namespace AtividadePratica2
 
         Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
         List<Filmes> f = new List<Filmes>();
-        Filmes encontrado;
+        List<Filmes> listafilmes;
         List<Filmes> listEdit = new List<Filmes>();
         List<Filmes> l = new List<Filmes>();
         List<Filmes> lp = new List<Filmes>();
@@ -23,6 +23,8 @@ namespace AtividadePratica2
         ListViewItem LISTA = new ListViewItem();
         ListViewItem lf = new ListViewItem();
         Filmes filmeencontrado;
+        Filmes cobaia;
+        Filmes encontrado;
 
         //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
@@ -84,14 +86,19 @@ namespace AtividadePratica2
 
 
 
-        public void AdicionaLW2 (Filmes filme)
+        public void AdicionaLW2()
         {
+            
+
             lf = new ListViewItem();
-            lf.Text = filme.NomeFilme;
-            lf.Group = listView2.Groups[filme.generofilme];
+            lf.Text = cobaia.NomeFilme;
+            lf.Group = listView2.Groups[cobaia.generofilme];
             listView2.Items.Add(lf);
-            lf.SubItems.Add(filme.DATA.ToShortDateString());
-            lf.SubItems.Add(filme.local);
+            lf.SubItems.Add(cobaia.DATA.ToShortDateString());
+            lf.SubItems.Add(cobaia.local);
+            //lf.SubItems[0].Text = cbgenerop.Text;
+            //lf.SubItems[1].Text = (cobaia.DATA.ToShortDateString());
+            //lf.SubItems[2].Text = cobaia.local;
         }
 
 
@@ -117,15 +124,22 @@ namespace AtividadePratica2
         //BOTAO REMOVER
         private void button3_Click(object sender, EventArgs e)
         {
+
+            listafilmes = Dicionario[listView1.SelectedItems[0].Group.Header];
+            //remove os itens da lista
+            for (int i = 0; i < listafilmes.Count; i++)
+            {
+                Filmes encontrado = listafilmes[i];
+                if (encontrado.NomeFilme == listView1.SelectedItems[0].Text)
+                {
+                    listafilmes.Remove(encontrado);
+                }
+            }
             //O laço vai percorrer a lista, e quando encontrar o item selecionado irá removelo do ListView
             for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
             {
                 ListViewItem remove = listView1.SelectedItems[i];
                 listView1.Items.Remove(remove);
-
-                List<Filmes> L = Dicionario[remove.SubItems[1].Text];
-                L.Remove(encontrado);
-
             }
 
         }
@@ -133,43 +147,41 @@ namespace AtividadePratica2
         //BOTAO EDITAR 
         private void button4_Click(object sender, EventArgs e)
         {
-            //laço percorre o list view até o seu item selecionado, quando o item for selecionado, ele troca seus campos.
-            for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
+            //pega o objeto do grupo selecionado e joga em um List
+            listafilmes = Dicionario[listView1.SelectedItems[0].Group.Header];
+            for (int i = 0; i < listafilmes.Count; i++)
             {
-                ListViewItem r = listView1.SelectedItems[i];
-                r.Group = listView1.Groups[cbGenero.SelectedIndex];
-                r.Text = txtnome.Text;
-                r.SubItems[1].Text = cbGenero.Text;
-                r.SubItems[2].Text = datatimerdata.Text;
-                r.SubItems[3].Text = textBox1.Text;
+                //criei uma variavel local do meu objeto filme e atribui o item do listafilmes para a variavel l.
+                Filmes encontrado = listafilmes[i];
+                if (encontrado.NomeFilme == listView1.SelectedItems[0].Text)
+                {
+                    encontrado.NomeFilme = txtnome.Text;
+                    encontrado.local = textBox1.Text;
+                    encontrado.generofilme = cbGenero.SelectedItem.ToString();
+                    encontrado.DATA = datatimerdata.Value.Date;
+                    if (Dicionario.ContainsKey(encontrado.generofilme))
+                    {
+                        List<Filmes> list = Dicionario[encontrado.generofilme];
+                        list.Add(encontrado);
+                    }
+                    else
+                    {
+                        List<Filmes> list = new List<Filmes>();
+                        list.Add(encontrado);
+                        Dicionario.Add(encontrado.generofilme, list);
+                    }
+                    listafilmes.Remove(encontrado);
+                }
             }
-
-
-            if (cbGenero.Text == encontrado.generofilme)
+            for (int i = listView1.SelectedItems.Count - 1; i >= 0; i--)
             {
-
-                encontrado.NomeFilme = txtnome.Text;
-                encontrado.DATA = datatimerdata.Value;
-                encontrado.local = textBox1.Text;
-
+                ListViewItem atualiza = listView1.SelectedItems[i];
+                atualiza.Group = listView1.Groups[cbGenero.SelectedIndex];
+                atualiza.Text = txtnome.Text;
+                atualiza.SubItems[1].Text = cbGenero.Text;
+                atualiza.SubItems[2].Text = datatimerdata.Value.ToShortDateString();
+                atualiza.SubItems[3].Text = textBox1.Text;
             }
-            else
-            {
-                //ELE TEM QUE REMOVER.
-
-                //l.Remove(encontrado);
-                List<Filmes> listEdit = new List<Filmes>();
-                encontrado.NomeFilme = txtnome.Text;
-                encontrado.generofilme = cbGenero.Text;
-                encontrado.DATA = datatimerdata.Value;
-                encontrado.local = textBox1.Text;
-                listEdit.Add(encontrado);
-
-                Dicionario.Add(cbGenero.Text, listEdit);
-                listEdit.Remove(encontrado);
-
-            }
-
         }
 
         //Evento de double click quando ele clicar no item da lista duas vezes
@@ -178,23 +190,30 @@ namespace AtividadePratica2
         {
             if (listView1.SelectedItems.Count != 0)
             {
-
+                
+                //coloca os itens e subitens nos texboxs para edição
+                txtnome.Text = listView1.SelectedItems[0].Text;
+                datatimerdata.Text= listView1.FocusedItem.SubItems[2].Text;
                 textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
-                cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
-                datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
-                txtnome.Text = listView1.FocusedItem.SubItems[0].Text;
-                List<Filmes> l = Dicionario[cbGenero.Text];
+                
+                cbGenero.Text = listView1.SelectedItems[0].Group.Header;
 
-                foreach (Filmes f in l)
-                {
-                    if (f.NomeFilme == txtnome.Text)
-                    {
-                        encontrado = f;
-                        MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-                    }
+                //textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
+                //cbGenero.Text = listView1.FocusedItem.SubItems[1].Text;
+                //datatimerdata.Text = listView1.FocusedItem.SubItems[2].Text;
+                //txtnome.Text = listView1.FocusedItem.SubItems[0].Text;
+                //List<Filmes> l = Dicionario[cbGenero.Text];
 
-                }
+                //foreach (Filmes f in l)
+                //{
+                //    if (f.NomeFilme == txtnome.Text)
+                //    {
+                //        encontrado = f;
+                //        MessageBox.Show("" + encontrado.NomeFilme + "   " + encontrado.generofilme + "  " + encontrado.DATA + "  " + encontrado.local, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        break;
+                //    }
+
+                //}
 
                 //pega o genero, pega a lista referente aquele genero, achou ve o que voce quer. data
 
@@ -214,21 +233,11 @@ namespace AtividadePratica2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            foreach (List<Filmes> pesq in Dicionario.Values)
-            {
-                foreach (Filmes pesqlist in pesq)
-                {
-                    listBox1.Items.Add(pesqlist.NomeFilme);
-                    listBox1.Items.Add(pesqlist.generofilme);
-                    listBox1.Items.Add(pesqlist.DATA);
-                    listBox1.Items.Add(pesqlist.local);
-                }
-            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -252,17 +261,22 @@ namespace AtividadePratica2
                         {
                             if ((cbgenerop.SelectedItem.ToString() == filmeencontrado.generofilme && txtnomep.Text == "" && txtlocalp.Text == ""))
                             {
+                                cobaia = filmeencontrado;
+                                AdicionaLW2();
 
-                                AdicionaLW2(filmeencontrado);
                             }
                             else if (((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text)) && (txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text))))
                             {
-                                AdicionaLW2(filmeencontrado);
+                                cobaia = filmeencontrado;
+                                AdicionaLW2();
+
                             }
                             else if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text == "")
                             || ((txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && txtnomep.Text == "")))
                             {
-                                AdicionaLW2(filmeencontrado);
+                                cobaia = filmeencontrado;
+                                AdicionaLW2();
+
                             }
                         }
                         else
@@ -271,17 +285,23 @@ namespace AtividadePratica2
                             DateTime dataB = dataatep.Value.Date;
                             if ((dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && cbgenerop.SelectedItem.ToString() == filmeencontrado.generofilme && txtnomep.Text == "" && txtlocalp.Text == "")
                             {
-                                AdicionaLW2(filmeencontrado);
+                                cobaia = filmeencontrado;
+                                AdicionaLW2();
+
                             }
                             else if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text)
                                 && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA)))
                             {
-                                AdicionaLW2(filmeencontrado);
+                                cobaia = filmeencontrado;
+                                AdicionaLW2();
+
                             }
                             else if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA))
                                 || (txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA)))
                             {
-                                AdicionaLW2(filmeencontrado);
+                                cobaia = filmeencontrado;
+                                AdicionaLW2();
+
                             }
                         }
                     }
@@ -305,12 +325,16 @@ namespace AtividadePratica2
                         if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text == "")
                             || ((txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && txtnomep.Text == "")))
                         {
-                            AdicionaLW2(filmeencontrado);
+                            cobaia = filmeencontrado;
+                            AdicionaLW2();
+
 
                         }
                         else if (txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text))
                         {
-                            AdicionaLW2(filmeencontrado);
+                            cobaia = filmeencontrado;
+                            AdicionaLW2();
+
                         }
                     }
                     else
@@ -320,17 +344,23 @@ namespace AtividadePratica2
                         if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && txtlocalp.Text == "")
                             || (txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && txtnomep.Text == ""))
                         {
-                            AdicionaLW2(filmeencontrado);
+                            cobaia = filmeencontrado;
+                            AdicionaLW2();
+
                         }
                         else if (txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA)
                             && txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text))
                         {
-                            AdicionaLW2(filmeencontrado);
+                            cobaia = filmeencontrado;
+                            AdicionaLW2();
+
 
                         }
                         else if ((dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && txtnomep.Text == "" && txtlocalp.Text == "")
                         {
-                            AdicionaLW2(filmeencontrado);
+                            cobaia = filmeencontrado;
+                            AdicionaLW2();
+
                         }
                     }
                 }
@@ -339,28 +369,38 @@ namespace AtividadePratica2
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
-            {
-                // Filmes
-                foreach (List<Filmes> l in Dicionario.Values)
-                {
-                    for (int i = 0; i < l.Count; i++)
-                    {
-                        LISTA = new ListViewItem();
-                        LISTA.Group = listView1.Groups[l[i].generofilme];
-                        LISTA.Text = l[i].NomeFilme;
-                        LISTA.SubItems.Add(l[i].DATA.ToShortDateString());
-                        LISTA.SubItems.Add(l[i].local);
-                        listView1.Items.Add(LISTA);
+            //if (tabControl1.SelectedIndex == 0)
+            //{
+            //    // Filmes
+            //    foreach (List<Filmes> l in Dicionario.Values)
+            //    {
+            //        for (int i = 0; i < l.Count; i++)
+            //        {
+            //            LISTA = new ListViewItem();
+            //            LISTA.Group = listView1.Groups[l[i].generofilme];
+            //            LISTA.Text = l[i].NomeFilme;
+            //            LISTA.SubItems.Add(l[i].DATA.ToShortDateString());
+            //            LISTA.SubItems.Add(l[i].local);
+            //            listView1.Items.Add(LISTA);
 
-                    }
-                }
-            }
-            else
-            {
-                // Pesquisa
-                listView1.Items.Clear();
-            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    // Pesquisa
+            //    listView1.Items.Clear();
+            //}
+        }
+
+        //BOTAO LIMPAR
+        private void button7_Click(object sender, EventArgs e)
+        {
+            listView2.Items.Clear();
+            cbd.Checked = false;
+            txtlocalp.Clear();
+            txtnomep.Clear();
+            cbgenerop.Text = "";
         }
     }
 }
