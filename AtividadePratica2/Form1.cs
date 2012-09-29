@@ -242,6 +242,13 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (cbd.Checked == false && cbg.Checked == false && cbl.Checked == false && cbnome.Checked == false)
+            {
+                MessageBox.Show("Selecione um método de pesquisa", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+
             if (cbgenerop.SelectedItem != null)
             {
                 //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi encontrado 
@@ -365,6 +372,7 @@ namespace AtividadePratica2
                     }
                 }
             }
+        }
         }
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
