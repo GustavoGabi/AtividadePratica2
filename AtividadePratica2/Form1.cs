@@ -19,7 +19,7 @@ namespace AtividadePratica2
         List<Filmes> listEdit = new List<Filmes>();
         List<Filmes> l = new List<Filmes>();
         List<Filmes> lp = new List<Filmes>();
-
+        ListViewItem LISTA = new ListViewItem();
 
         //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
@@ -232,25 +232,72 @@ namespace AtividadePratica2
             }
             else
             {
+                
                 if (cbg.Checked)
                 {
+                    //Verifica se no dicionario ja possui a chave Genero que ele quer procurar!
                     if (Dicionario.ContainsKey(cbgenerop.Text))
                     {
-                        string cobaia = cbgenerop.Text;
-                        List<Filmes> lis = Dicionario[cobaia];
-                        //lp.AddRange(lis);
-                        foreach (List<Filmes> l in Dicionario.Values)
-                        {
-                            lp.AddRange(l);
-                        }
+                        
+                        List<Filmes> lis = Dicionario[cbgenerop.Text];
+                        lp.AddRange(lis);
                     }
                     else
                     {
-                        //mensagem a ser apresentada se nao possui filmes com certo genero.
-                        MessageBox.Show("Nao existe filme com este genero", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Mensagem que aparecerá cazo ele nao cadastre nenhum filme com o genero selecionado na pesquisa.
+                        MessageBox.Show("Nenhum filme localizado com este Genero.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
+                if (lp.Count == 0)
+                {
+                    MessageBox.Show("Nenhum filme Cadastrado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    for (int i = 0; i < lp.Count; i++)
+                    {
+                        Filmes pesquisaE = lp[i];
+                        if (cbnome.Checked && txtnomep.Text != pesquisaE.NomeFilme)
+                        {
+                            lp.Remove(pesquisaE);
+                        }
+                        if (cbl.Checked && txtlocalp.Text != pesquisaE.local)
+                        {
+
+                        }
+
+                    }
+                }
+            }
+        }
+
+
+
+        //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                // Filmes
+                foreach (List<Filmes> l in Dicionario.Values)
+                {
+                    for (int i = 0; i < l.Count; i++)
+                    {
+                        LISTA = new ListViewItem();
+                        LISTA.Group = listView1.Groups[l[i].generofilme];
+                        LISTA.Text = l[i].NomeFilme;
+                        LISTA.SubItems.Add(l[i].DATA);
+                        LISTA.SubItems.Add(l[i].local);
+                        listView1.Items.Add(LISTA);
+
+                    }
+                }
+            }
+            else
+            {
+                // Pesquisa
+                listView1.Items.Clear();
             }
         }
     }
