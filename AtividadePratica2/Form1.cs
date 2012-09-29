@@ -19,7 +19,10 @@ namespace AtividadePratica2
         List<Filmes> listEdit = new List<Filmes>();
         List<Filmes> l = new List<Filmes>();
         List<Filmes> lp = new List<Filmes>();
+        List<Filmes> listatotal = new List<Filmes>();
         ListViewItem LISTA = new ListViewItem();
+        ListViewItem lf = new ListViewItem();
+        Filmes filmeencontrado;
 
         //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
@@ -64,7 +67,7 @@ namespace AtividadePratica2
                 }
                 //Cria a lista para adicionar grupos e items de determinado grupo, dependendo do que ele selecionar no seu Genero ele entra nas condições e a condição verdadeira será o seu grupo..
                 //OBS: os grupos criados sempre será o nome do gênero que voce selecionar no seu ComboBox.
-                ListViewItem lf = new ListViewItem();
+                lf = new ListViewItem();
 
                 lf.Group = listView1.Groups[filme.generofilme];
                 lf.Text = txtnome.Text;
@@ -81,10 +84,14 @@ namespace AtividadePratica2
 
 
 
-        public bool Verifica()
+        public void AdicionaLW2 (Filmes filme)
         {
-
-            return true;
+            lf = new ListViewItem();
+            lf.Text = filme.NomeFilme;
+            lf.Group = listView2.Groups[filme.generofilme];
+            listView2.Items.Add(lf);
+            lf.SubItems.Add(filme.DATA.ToShortDateString());
+            lf.SubItems.Add(filme.local);
         }
 
 
@@ -226,68 +233,109 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (cbg.Checked == false && cbnome.Checked == false && cbl.Checked == false && cbd.Checked == false)
+            if (cbgenerop.SelectedItem != null)
             {
-                MessageBox.Show("Selecione um método de pesquisa", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi encontrado 
+                if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
+                {
+                    //pega os valores da chave do dicionario.
+                    List<Filmes> lPesquisa = Dicionario[cbgenerop.Text];
+
+                    //percorre cada filme ate que i < pesqlist 
+                    for (int i = 0; i < lPesquisa.Count; i++)
+                    {
+                        filmeencontrado = new Filmes();
+                        //pega o objeto de cada filme que esta no pesqlist
+                        filmeencontrado = lPesquisa[i];
+                        //se a data nao for checada entra no if, se nao vai para outra condição
+                        if (cbd.Checked == false)
+                        {
+                            if ((cbgenerop.SelectedItem.ToString() == filmeencontrado.generofilme && txtnomep.Text == "" && txtlocalp.Text == ""))
+                            {
+
+                                AdicionaLW2(filmeencontrado);
+                            }
+                            else if (((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text)) && (txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text))))
+                            {
+                                AdicionaLW2(filmeencontrado);
+                            }
+                            else if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text == "")
+                            || ((txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && txtnomep.Text == "")))
+                            {
+                                AdicionaLW2(filmeencontrado);
+                            }
+                        }
+                        else
+                        {
+                            DateTime dataA = datap.Value.Date;
+                            DateTime dataB = dataatep.Value.Date;
+                            if ((dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && cbgenerop.SelectedItem.ToString() == filmeencontrado.generofilme && txtnomep.Text == "" && txtlocalp.Text == "")
+                            {
+                                AdicionaLW2(filmeencontrado);
+                            }
+                            else if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text)
+                                && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA)))
+                            {
+                                AdicionaLW2(filmeencontrado);
+                            }
+                            else if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA))
+                                || (txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA)))
+                            {
+                                AdicionaLW2(filmeencontrado);
+                            }
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Este genero não possui na sua Lista de filmeencontrados", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                
-                if (cbg.Checked)
+                listatotal.Clear();
+                foreach (List<Filmes> lt in Dicionario.Values)
                 {
-                    //Verifica se no dicionario ja possui a chave Genero que ele quer procurar!
-                    if (Dicionario.ContainsKey(cbgenerop.Text))
+                    listatotal.AddRange(lt);
+                }
+                for (int i = 0; i < listatotal.Count; i++)
+                {
+                    filmeencontrado = new Filmes();
+                    filmeencontrado = listatotal[i];
+                    if (cbd.Checked == false)
                     {
-                        
-                        List<Filmes> lis = Dicionario[cbgenerop.Text];
-                        lp.AddRange(lis);
+                        if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text == "")
+                            || ((txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && txtnomep.Text == "")))
+                        {
+                            AdicionaLW2(filmeencontrado);
+
+                        }
+                        else if (txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text))
+                        {
+                            AdicionaLW2(filmeencontrado);
+                        }
                     }
                     else
                     {
-                        //Mensagem que aparecerá cazo ele nao cadastre nenhum filme com o genero selecionado na pesquisa.
-                        MessageBox.Show("Nenhum filme localizado com este Genero.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DateTime dataA = datap.Value.Date;
+                        DateTime dataB = dataatep.Value.Date;
+                        if ((txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && txtlocalp.Text == "")
+                            || (txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && txtnomep.Text == ""))
+                        {
+                            AdicionaLW2(filmeencontrado);
+                        }
+                        else if (txtnomep.Text != "" && filmeencontrado.NomeFilme.Contains(txtnomep.Text) && (dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA)
+                            && txtlocalp.Text != "" && filmeencontrado.local.Contains(txtlocalp.Text))
+                        {
+                            AdicionaLW2(filmeencontrado);
 
-                    }
-                }
-                if (lp.Count == 0)
-                {
-                    MessageBox.Show("Nenhum filme Cadastrado!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    for (int i = 0; i < lp.Count; i++)
-                    {
-                        Filmes pesquisaE = lp[i];
-                        if (cbnome.Checked && txtnomep.Text != pesquisaE.NomeFilme)
-                        {
-                            lp.Remove(pesquisaE);
                         }
-                        if (cbl.Checked && txtlocalp.Text != pesquisaE.local)
+                        else if ((dataA <= filmeencontrado.DATA && dataB >= filmeencontrado.DATA) && txtnomep.Text == "" && txtlocalp.Text == "")
                         {
-                            lp.Remove(pesquisaE);
+                            AdicionaLW2(filmeencontrado);
                         }
-                        if (cbd.Checked && datap.Value.Date < pesquisaE.DATA)
-                        {
-                            lp.Remove(pesquisaE);
-                        }
-                    }
-                    foreach (Filmes u in lp)
-                    {
-                        ListViewItem exibir = new ListViewItem();
-                        exibir.Group = listView1.Groups[u.generofilme];
-                        exibir.Text = u.NomeFilme;
-                        exibir.SubItems.Add(u.generofilme);
-                        exibir.SubItems.Add(u.DATA.ToShortDateString());
-                        exibir.SubItems.Add(u.local);
-                        listView1.Items.Add(exibir);
-
                     }
                 }
             }
         }
-
-
-
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
