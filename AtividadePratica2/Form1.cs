@@ -246,74 +246,194 @@ namespace AtividadePratica2
         private void button2_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
-
-            if (cbg.Checked)
+            if (cbgenerop.SelectedItem != null)
             {
-                //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi localizado
+                //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi encontrado 
                 if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
                 {
                     //pega os valores da chave do dicionario.
-                    List<Filmes> listpesq = Dicionario[cbgenerop.Text];
-                    ListaPesquisaTOTAL.AddRange(listpesq);
+                    List<Filmes> pesqlist = Dicionario[cbgenerop.Text];
+
                     //percorre cada filme ate que i < pesqlist 
+                    for (int i = 0; i < pesqlist.Count; i++)
+                    {
+                        FE = new Filmes();
+                        //pega o objeto de cada filme que esta no pesqlist
+                        FE = pesqlist[i];
+                        //se a data nao for checada entra no if, se nao vai para outra condição
+                        if (cbd.Checked == false)
+                        {
+                            if ((cbgenerop.SelectedItem.ToString() == FE.generofilme && txtnomep.Text == "" && txtlocalp.Text == ""))
+                            {
+                                cobaia = FE;
+                                AdicionaLW2();
+                            }
+                            else if (((txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text)) && (txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text))))
+                            {
+                                cobaia = FE;
+                                AdicionaLW2();
+                            }
+                            else if ((txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text == "")
+                            || ((txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text) && txtnomep.Text == "")))
+                            {
+                                cobaia = FE;
+                                AdicionaLW2();
+                            }
+                        }
+                        else
+                        {
+                            DateTime dataA = datap.Value.Date;
+                            DateTime dataB = dataatep.Value.Date;
+                            if ((dataA <= FE.DATA && dataB >= FE.DATA) && cbgenerop.SelectedItem.ToString() == FE.generofilme && txtnomep.Text == "" && txtlocalp.Text == "")
+                            {
+                                cobaia = FE;
+                                AdicionaLW2();
+                            }
+                            else if ((txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text)
+                                && (dataA <= FE.DATA && dataB >= FE.DATA)))
+                            {
+                                cobaia = FE;
+                                AdicionaLW2();
+                            }
+                            else if ((txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && (dataA <= FE.DATA && dataB >= FE.DATA))
+                                || (txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text) && (dataA <= FE.DATA && dataB >= FE.DATA)))
+                            {
+                                cobaia = FE;
+                                AdicionaLW2();
+                            }
+                        }
+                    }
                 }
                 else
-                {
-                    MessageBox.Show("Nao existe filme cadastrado com este genero", "Aviso", MessageBoxButtons.OK);
-                }
+                    MessageBox.Show("Este genero não possui na sua Lista de Filmes", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                foreach (List<Filmes> p in Dicionario.Values)
+
+                ListaPesquisaTOTAL.Clear();
+                //Pega todos os valores do dicionadio
+                foreach (List<Filmes> todalista in Dicionario.Values)
                 {
-                    ListaPesquisaTOTAL.AddRange(p);
+                    ListaPesquisaTOTAL.AddRange(todalista);
                 }
-            }
-            if (ListaPesquisaTOTAL.Count == 0)
-            {
-            }
-            else
-            {
+                //percorre cada filme ate que i < TodososFilmes
                 for (int i = 0; i < ListaPesquisaTOTAL.Count; i++)
                 {
-                    Filmes FE = ListaPesquisaTOTAL[i];
+                    FE = new Filmes();
+                    FE = ListaPesquisaTOTAL[i];
+                    //se a data nao for checada entra no if, se nao vai para outra condição
+                    if (cbd.Checked == false)
+                    {
+                        if ((txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text == "")
+                            || ((txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text) && txtnomep.Text == "")))
+                        {
+                            cobaia = FE;
+                            AdicionaLW2();
 
-                    if (cbnome.Checked)
-                    {
-                        if (FE.NomeFilme != txtnomep.Text)
-                        {
-                            ListaPesquisaTOTAL.Remove(FE);
                         }
-                    }
-                    if (cbd.Checked)
-                    {
-                        DateTime DataI = datap.Value.Date;
-                        DateTime DataF = dataatep.Value.Date;
+                        else if (txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text))
+                        {
 
-                        if (DataI.Date > FE.DATA.Date && DataF.Date > FE.DATA.Date)
-                        {
-                            ListaPesquisaTOTAL.Remove(FE);
+                            AdicionaLW2();
                         }
                     }
-                    if (cbl.Checked)
+                    else
                     {
-                        if (FE.local != txtlocalp.Text)
+                        DateTime dataA = datap.Value.Date;
+                        DateTime dataB = dataatep.Value.Date;
+                        if ((txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && (dataA <= FE.DATA && dataB >= FE.DATA) && txtlocalp.Text == "")
+                            || (txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text) && (dataA <= FE.DATA && dataB >= FE.DATA) && txtnomep.Text == ""))
                         {
-                            ListaPesquisaTOTAL.Remove(FE);
+                            cobaia = FE;
+                            AdicionaLW2();
+
+                        }
+                        else if (txtnomep.Text != "" && FE.NomeFilme.Contains(txtnomep.Text) && (dataA <= FE.DATA && dataB >= FE.DATA)
+                            && txtlocalp.Text != "" && FE.local.Contains(txtlocalp.Text))
+                        {
+                            cobaia = FE;
+                            AdicionaLW2();
+
+                        }
+                        else if ((dataA <= FE.DATA && dataB >= FE.DATA) && txtnomep.Text == "" && txtlocalp.Text == "")
+                        {
+                            cobaia = FE;
+                            AdicionaLW2();
                         }
                     }
-                    ////AdicionaLW2();
-                    //foreach (Filmes ex in ListaPesquisaTOTAL)
-                    //{
-                    //    ListViewItem listview_pesquisa = new ListViewItem();
-                    //    listview_pesquisa.Group = listView2.Groups[ex.generofilme];
-                    //    listview_pesquisa.Text = ex.NomeFilme;
-                    //    listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
-                    //    listview_pesquisa.SubItems.Add(ex.local);
-                    //    listView2.Items.Add(listview_pesquisa);
                 }
             }
+
         }
+
+
+        //    if (cbg.Checked)
+        //    {
+        //        //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi localizado
+        //        if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
+        //        {
+        //            //pega os valores da chave do dicionario.
+        //            List<Filmes> listpesq = Dicionario[cbgenerop.Text];
+        //            ListaPesquisaTOTAL.AddRange(listpesq);
+        //            //percorre cada filme ate que i < pesqlist 
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Nao existe filme cadastrado com este genero", "Aviso", MessageBoxButtons.OK);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        foreach (List<Filmes> p in Dicionario.Values)
+        //        {
+        //            ListaPesquisaTOTAL.AddRange(p);
+        //        }
+        //    }
+        //    if (ListaPesquisaTOTAL.Count == 0)
+        //    {
+        //    }
+        //    else
+        //    {
+        //        for (int i = 0; i < ListaPesquisaTOTAL.Count; i++)
+        //        {
+        //            Filmes FE = ListaPesquisaTOTAL[i];
+
+        //            if (cbnome.Checked)
+        //            {
+        //                if (FE.NomeFilme != txtnomep.Text)
+        //                {
+        //                    ListaPesquisaTOTAL.Remove(FE);
+        //                }
+        //            }
+        //            if (cbd.Checked)
+        //            {
+        //                DateTime DataI = datap.Value.Date;
+        //                DateTime DataF = dataatep.Value.Date;
+
+        //                if (DataI.Date > FE.DATA.Date && DataF.Date > FE.DATA.Date)
+        //                {
+        //                    ListaPesquisaTOTAL.Remove(FE);
+        //                }
+        //            }
+        //            if (cbl.Checked)
+        //            {
+        //                if (FE.local != txtlocalp.Text)
+        //                {
+        //                    ListaPesquisaTOTAL.Remove(FE);
+        //                }
+        //            }
+        //            ////AdicionaLW2();
+        //            //foreach (Filmes ex in ListaPesquisaTOTAL)
+        //            //{
+        //            //    ListViewItem listview_pesquisa = new ListViewItem();
+        //            //    listview_pesquisa.Group = listView2.Groups[ex.generofilme];
+        //            //    listview_pesquisa.Text = ex.NomeFilme;
+        //            //    listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
+        //            //    listview_pesquisa.SubItems.Add(ex.local);
+        //            //    listView2.Items.Add(listview_pesquisa);
+        //        }
+        //    }
+        //}
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
 
         //BOTAO LIMPAR
@@ -326,8 +446,8 @@ namespace AtividadePratica2
             cbl.Checked = false;
             txtlocalp.Clear();
             txtnomep.Clear();
-            cbgenerop.Text = "";
-            ListaPesquisaTOTAL.Clear();
+            cbgenerop.Text = null;
+            //ListaPesquisaTOTAL.Clear();
             button2.Enabled = true;
 
         }
