@@ -12,7 +12,7 @@ namespace AtividadePratica2
 
     public partial class Form1 : Form
     {
-        List<Filmes> ListaPesquisaTOTAL = new List<Filmes>();
+        
         Dictionary<string, List<Filmes>> Dicionario = new Dictionary<string, List<Filmes>>();
         List<Filmes> f = new List<Filmes>();
         List<Filmes> listafilmes;
@@ -25,6 +25,7 @@ namespace AtividadePratica2
         Filmes cobaia;
         Filmes encontrado;
         Filmes FE;
+        List<Filmes> ListaPesquisaTOTAL = new List<Filmes>();
 
         //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
@@ -90,12 +91,14 @@ namespace AtividadePratica2
         {
             
 
-            lf = new ListViewItem();
-            lf.Text = cobaia.NomeFilme;
-            lf.Group = listView2.Groups[cobaia.generofilme];
-            listView2.Items.Add(lf);
-            lf.SubItems.Add(cobaia.DATA.ToShortDateString());
-            lf.SubItems.Add(cobaia.local);
+            ListViewItem ap = new ListViewItem();
+            ap.Text = cobaia.NomeFilme;
+            ap.Group = listView2.Groups[cobaia.generofilme];
+            listView2.Items.Add(ap);
+            ap.SubItems.Add(cobaia.DATA.ToShortDateString());
+            ap.SubItems.Add(cobaia.local);
+           
+            
             //lf.SubItems[0].Text = cbgenerop.Text;
             //lf.SubItems[1].Text = (cobaia.DATA.ToShortDateString());
             //lf.SubItems[2].Text = cobaia.local;
@@ -242,6 +245,7 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             if (cbd.Checked == false && cbg.Checked == false && cbl.Checked == false && cbnome.Checked == false)
             {
                 MessageBox.Show("Selecione um método de pesquisa", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -251,16 +255,19 @@ namespace AtividadePratica2
                 if (cbg.Checked)
                 {
                     //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi encontrado 
-                    if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
+                    if (cbgenerop.SelectedItem.ToString() != "")
                     {
-                        //pega os valores da chave do dicionario.
-                        List<Filmes> listaPesq = Dicionario[cbgenerop.Text];
-                        ListaPesquisaTOTAL.AddRange(listaPesq);
-                        //percorre cada filme ate que i < pesqlist 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nao existe filme com este genero", "Aviso", MessageBoxButtons.OK);
+                        if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
+                        {
+                            //pega os valores da chave do dicionario.
+                            List<Filmes> listpesq = Dicionario[cbgenerop.Text];
+                            ListaPesquisaTOTAL.AddRange(listpesq);
+                            //percorre cada filme ate que i < pesqlist 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nao existe filme com este genero", "Aviso", MessageBoxButtons.OK);
+                        }
                     }
                 }
                 else
@@ -279,56 +286,37 @@ namespace AtividadePratica2
                     for (int i = 0; i < ListaPesquisaTOTAL.Count; i++)
                     {
                         Filmes FE = ListaPesquisaTOTAL[i];
-                        if (cbnome.Checked)
-                        {
-                            if (FE.NomeFilme == (txtnomep.Text))
-                            {
-                                cobaia = FE;
-                            }
-                        }
-                        if (cbd.Checked && (FE.DATA.Date > datap.Value) && (FE.DATA.Date > dataatep.Value))
-                        {
-                            cobaia = FE;
-                        }
-                        if (cbl.Checked && FE.local == txtlocalp.Text)
-                        {
-                            cobaia = FE;
-                        }
-                        
 
+                        if (cbnome.Checked && FE.NomeFilme != txtnomep.Text)
+                        {
+                            ListaPesquisaTOTAL.Remove(FE);
+                            
+                        }
+                        if (cbd.Checked && (FE.DATA.Date >= datap.Value) && (FE.DATA.Date <= dataatep.Value))
+                        {
+                            ListaPesquisaTOTAL.Remove(FE);
+                        }
+                        if (cbl.Checked && FE.local != txtlocalp.Text)
+                        {
+                            ListaPesquisaTOTAL.Remove(FE);
+
+                        }  
                     }
-                    AdicionaLW2();
+                    foreach (Filmes ex in ListaPesquisaTOTAL)
+                    {
+                        ListViewItem listview_pesquisa = new ListViewItem();
+                        listview_pesquisa.Group = listView2.Groups[ex.generofilme];
+                        listview_pesquisa.Text = ex.NomeFilme;
+                        listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
+                        listview_pesquisa.SubItems.Add(ex.local);
+                        listView2.Items.Add(listview_pesquisa);
+                    }
                 }
-
+                
             }
 
         }
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (tabControl1.SelectedIndex == 0)
-            //{
-            //    // Filmes
-            //    foreach (List<Filmes> l in Dicionario.Values)
-            //    {
-            //        for (int i = 0; i < l.Count; i++)
-            //        {
-            //            LISTA = new ListViewItem();
-            //            LISTA.Group = listView1.Groups[l[i].generofilme];
-            //            LISTA.Text = l[i].NomeFilme;
-            //            LISTA.SubItems.Add(l[i].DATA.ToShortDateString());
-            //            LISTA.SubItems.Add(l[i].local);
-            //            listView1.Items.Add(LISTA);
-
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    // Pesquisa
-            //    listView1.Items.Clear();
-            //}
-        }
 
         //BOTAO LIMPAR
         private void button7_Click(object sender, EventArgs e)
