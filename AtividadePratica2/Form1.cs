@@ -246,81 +246,72 @@ namespace AtividadePratica2
         private void button2_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
-            if (cbd.Checked == false && cbg.Checked == false && cbl.Checked == false && cbnome.Checked == false)
+
+            if (cbg.Checked)
             {
-                MessageBox.Show("Selecione um método de pesquisa", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi localizado
+                if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
+                {
+                    //pega os valores da chave do dicionario.
+                    List<Filmes> listpesq = Dicionario[cbgenerop.Text];
+                    ListaPesquisaTOTAL.AddRange(listpesq);
+                    //percorre cada filme ate que i < pesqlist 
+                }
+                else
+                {
+                    MessageBox.Show("Nao existe filme cadastrado com este genero", "Aviso", MessageBoxButtons.OK);
+                }
             }
             else
             {
-                if (cbg.Checked)
+                foreach (List<Filmes> p in Dicionario.Values)
                 {
-                        //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi localizado
-                        if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
-                        {
-                            //pega os valores da chave do dicionario.
-                            List<Filmes> listpesq = Dicionario[cbgenerop.Text];
-                            ListaPesquisaTOTAL.AddRange(listpesq);
-                            //percorre cada filme ate que i < pesqlist 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nao existe filme cadastrado com este genero", "Aviso", MessageBoxButtons.OK);
-                        }
+                    ListaPesquisaTOTAL.AddRange(p);
                 }
-                else
+            }
+            if (ListaPesquisaTOTAL.Count == 0)
+            {
+            }
+            else
+            {
+                for (int i = 0; i < ListaPesquisaTOTAL.Count; i++)
                 {
-                    foreach (List<Filmes> p in Dicionario.Values)
-                    {
-                        ListaPesquisaTOTAL.AddRange(p);
-                    }
-                }
-                if (ListaPesquisaTOTAL.Count == 0)
-                {
-                }
-                else
-                {
-                    for (int i = 0; i < ListaPesquisaTOTAL.Count; i++)
-                    {
-                        Filmes FE = ListaPesquisaTOTAL[i];
+                    Filmes FE = ListaPesquisaTOTAL[i];
 
-                        if (cbnome.Checked)
+                    if (cbnome.Checked)
+                    {
+                        if (FE.NomeFilme != txtnomep.Text)
                         {
-                            if (FE.NomeFilme != txtnomep.Text)
-                            {
-                                ListaPesquisaTOTAL.Remove(FE);
-                            }
-                        }
-                        if (cbd.Checked)
-                        {
-                            DateTime DataI = datap.Value.Date;
-                            DateTime DataF = dataatep.Value.Date;
-
-                            if (DataI.Date > FE.DATA.Date && DataF.Date > FE.DATA.Date)
-                            {
-                                ListaPesquisaTOTAL.Remove(FE);
-                            }
-                        }
-                        if (cbl.Checked)
-                        {
-                            if (FE.local != txtlocalp.Text)
-                            {
-                                ListaPesquisaTOTAL.Remove(FE);
-                            }
-                        }
-                        //AdicionaLW2();
-                        foreach (Filmes ex in ListaPesquisaTOTAL)
-                        {
-                            ListViewItem listview_pesquisa = new ListViewItem();
-                            listview_pesquisa.Group = listView2.Groups[ex.generofilme];
-                            listview_pesquisa.Text = ex.NomeFilme;
-                            listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
-                            listview_pesquisa.SubItems.Add(ex.local);
-                            listView2.Items.Add(listview_pesquisa);
+                            ListaPesquisaTOTAL.Remove(FE);
                         }
                     }
+                    if (cbd.Checked)
+                    {
+                        DateTime DataI = datap.Value.Date;
+                        DateTime DataF = dataatep.Value.Date;
 
+                        if (DataI.Date > FE.DATA.Date && DataF.Date > FE.DATA.Date)
+                        {
+                            ListaPesquisaTOTAL.Remove(FE);
+                        }
+                    }
+                    if (cbl.Checked)
+                    {
+                        if (FE.local != txtlocalp.Text)
+                        {
+                            ListaPesquisaTOTAL.Remove(FE);
+                        }
+                    }
+                    ////AdicionaLW2();
+                    //foreach (Filmes ex in ListaPesquisaTOTAL)
+                    //{
+                    //    ListViewItem listview_pesquisa = new ListViewItem();
+                    //    listview_pesquisa.Group = listView2.Groups[ex.generofilme];
+                    //    listview_pesquisa.Text = ex.NomeFilme;
+                    //    listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
+                    //    listview_pesquisa.SubItems.Add(ex.local);
+                    //    listView2.Items.Add(listview_pesquisa);
                 }
-
             }
         }
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
