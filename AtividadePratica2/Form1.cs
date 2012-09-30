@@ -245,7 +245,7 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             if (cbd.Checked == false && cbg.Checked == false && cbl.Checked == false && cbnome.Checked == false)
             {
                 MessageBox.Show("Selecione um método de pesquisa", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -266,6 +266,10 @@ namespace AtividadePratica2
                         }
                         else
                         {
+                            foreach (List<Filmes> p in Dicionario.Values)
+                            {
+                                ListaPesquisaTOTAL.AddRange(p);
+                            }
                             MessageBox.Show("Nao existe filme com este genero", "Aviso", MessageBoxButtons.OK);
                         }
                     }
@@ -287,34 +291,45 @@ namespace AtividadePratica2
                     {
                         Filmes FE = ListaPesquisaTOTAL[i];
 
-                        if (cbnome.Checked && FE.NomeFilme != txtnomep.Text)
+                        if (cbnome.Checked)
                         {
-                            ListaPesquisaTOTAL.Remove(FE);
-                            
-                        }
-                        if (cbd.Checked && (FE.DATA.Date >= datap.Value) && (FE.DATA.Date <= dataatep.Value))
-                        {
-                            ListaPesquisaTOTAL.Remove(FE);
-                        }
-                        if (cbl.Checked && FE.local != txtlocalp.Text)
-                        {
-                            ListaPesquisaTOTAL.Remove(FE);
+                            if (FE.NomeFilme == txtnome.Text)
+                            {
+                                cobaia = FE;
+                            }
 
-                        }  
+                        }
+                        if (cbd.Checked)
+                        {
+                            DateTime DataI = datap.Value.Date;
+                            DateTime DataF = dataatep.Value.Date;
+
+                            if (DataI.Date <= FE.DATA.Date && DataF.Date >= FE.DATA.Date)
+                            {
+                                cobaia = FE;
+                            }
+                        }
+                        if (cbl.Checked)
+                        {
+                            if (FE.local == txtlocalp.Text)
+                            {
+                                cobaia = FE;
+                            }
+                        }
+                        foreach (Filmes ex in ListaPesquisaTOTAL)
+                        {
+                            ListViewItem listview_pesquisa = new ListViewItem();
+                            listview_pesquisa.Group = listView2.Groups[ex.generofilme];
+                            listview_pesquisa.Text = ex.NomeFilme;
+                            listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
+                            listview_pesquisa.SubItems.Add(ex.local);
+                            listView2.Items.Add(listview_pesquisa);
+                        }
                     }
-                    foreach (Filmes ex in ListaPesquisaTOTAL)
-                    {
-                        ListViewItem listview_pesquisa = new ListViewItem();
-                        listview_pesquisa.Group = listView2.Groups[ex.generofilme];
-                        listview_pesquisa.Text = ex.NomeFilme;
-                        listview_pesquisa.SubItems.Add(ex.DATA.ToShortDateString());
-                        listview_pesquisa.SubItems.Add(ex.local);
-                        listView2.Items.Add(listview_pesquisa);
-                    }
+
                 }
-                
-            }
 
+            }
         }
         //EVENTO CRIADO QUANDO ALTERAR O TAB CONTROL DE FILMES PARA PESQUISA
 
@@ -326,6 +341,7 @@ namespace AtividadePratica2
             txtlocalp.Clear();
             txtnomep.Clear();
             cbgenerop.Text = "";
+            ListaPesquisaTOTAL.Clear();
         }
     }
 }
