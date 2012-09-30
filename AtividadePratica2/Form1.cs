@@ -245,7 +245,7 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            button2.Enabled = false;
             if (cbd.Checked == false && cbg.Checked == false && cbl.Checked == false && cbnome.Checked == false)
             {
                 MessageBox.Show("Selecione um método de pesquisa", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -254,9 +254,7 @@ namespace AtividadePratica2
             {
                 if (cbg.Checked)
                 {
-                    //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi encontrado 
-                    if (cbgenerop.SelectedItem.ToString() != "")
-                    {
+                        //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi localizado
                         if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
                         {
                             //pega os valores da chave do dicionario.
@@ -266,13 +264,8 @@ namespace AtividadePratica2
                         }
                         else
                         {
-                            foreach (List<Filmes> p in Dicionario.Values)
-                            {
-                                ListaPesquisaTOTAL.AddRange(p);
-                            }
-                            MessageBox.Show("Nao existe filme com este genero", "Aviso", MessageBoxButtons.OK);
+                            MessageBox.Show("Nao existe filme cadastrado com este genero", "Aviso", MessageBoxButtons.OK);
                         }
-                    }
                 }
                 else
                 {
@@ -283,7 +276,6 @@ namespace AtividadePratica2
                 }
                 if (ListaPesquisaTOTAL.Count == 0)
                 {
-                    MessageBox.Show("Nao possui filmes Cadastrados", "", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -293,29 +285,29 @@ namespace AtividadePratica2
 
                         if (cbnome.Checked)
                         {
-                            if (FE.NomeFilme == txtnome.Text)
+                            if (FE.NomeFilme != txtnomep.Text)
                             {
-                                cobaia = FE;
+                                ListaPesquisaTOTAL.Remove(FE);
                             }
-
                         }
                         if (cbd.Checked)
                         {
                             DateTime DataI = datap.Value.Date;
                             DateTime DataF = dataatep.Value.Date;
 
-                            if (DataI.Date <= FE.DATA.Date && DataF.Date >= FE.DATA.Date)
+                            if (DataI.Date > FE.DATA.Date && DataF.Date > FE.DATA.Date)
                             {
-                                cobaia = FE;
+                                ListaPesquisaTOTAL.Remove(FE);
                             }
                         }
                         if (cbl.Checked)
                         {
-                            if (FE.local == txtlocalp.Text)
+                            if (FE.local != txtlocalp.Text)
                             {
-                                cobaia = FE;
+                                ListaPesquisaTOTAL.Remove(FE);
                             }
                         }
+                        //AdicionaLW2();
                         foreach (Filmes ex in ListaPesquisaTOTAL)
                         {
                             ListViewItem listview_pesquisa = new ListViewItem();
@@ -338,10 +330,15 @@ namespace AtividadePratica2
         {
             listView2.Items.Clear();
             cbd.Checked = false;
+            cbnome.Checked = false;
+            cbg.Checked = false;
+            cbl.Checked = false;
             txtlocalp.Clear();
             txtnomep.Clear();
             cbgenerop.Text = "";
             ListaPesquisaTOTAL.Clear();
+            button2.Enabled = true;
+
         }
     }
 }
