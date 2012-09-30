@@ -48,6 +48,11 @@
             System.Windows.Forms.ListViewGroup listViewGroup18 = new System.Windows.Forms.ListViewGroup("Documentário", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.NomeFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.GeneroFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DataFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LocalFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button4 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -60,6 +65,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.NomeFilmeP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NomeDataP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NomeLocalP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button7 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.cbgenerop = new System.Windows.Forms.ComboBox();
@@ -73,19 +82,10 @@
             this.txtnomep = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbd = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.cbl = new System.Windows.Forms.CheckBox();
             this.cbg = new System.Windows.Forms.CheckBox();
             this.cbnome = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.NomeFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GeneroFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DataFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LocalFilme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.NomeFilmeP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NomeDataP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NomeLocalP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -101,7 +101,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(679, 497);
             this.tabControl1.TabIndex = 0;
-
             // 
             // tabPage1
             // 
@@ -126,6 +125,70 @@
             this.tabPage1.Size = new System.Drawing.Size(671, 471);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "..::Filmes::..";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NomeFilme,
+            this.GeneroFilme,
+            this.DataFilme,
+            this.LocalFilme});
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            listViewGroup1.Header = "Ação";
+            listViewGroup1.Name = "Ação";
+            listViewGroup2.Header = "Aventura";
+            listViewGroup2.Name = "Aventura";
+            listViewGroup3.Header = "Comédia";
+            listViewGroup3.Name = "Comédia";
+            listViewGroup4.Header = "Romance";
+            listViewGroup4.Name = "Romance";
+            listViewGroup5.Header = "Infantil";
+            listViewGroup5.Name = "Infantil";
+            listViewGroup6.Header = "Terror";
+            listViewGroup6.Name = "Terror";
+            listViewGroup7.Header = "Suspense";
+            listViewGroup7.Name = "Suspense";
+            listViewGroup8.Header = "Ficção - Científica";
+            listViewGroup8.Name = "Ficção - Científica";
+            listViewGroup9.Header = "Documentário";
+            listViewGroup9.Name = "Documentário";
+            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8,
+            listViewGroup9});
+            this.listView1.Location = new System.Drawing.Point(9, 238);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(656, 227);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
+            // 
+            // NomeFilme
+            // 
+            this.NomeFilme.Text = "Nome";
+            this.NomeFilme.Width = 203;
+            // 
+            // GeneroFilme
+            // 
+            this.GeneroFilme.Text = "Gênero";
+            this.GeneroFilme.Width = 146;
+            // 
+            // DataFilme
+            // 
+            this.DataFilme.Text = "Data";
+            this.DataFilme.Width = 138;
+            // 
+            // LocalFilme
+            // 
+            this.LocalFilme.Text = "Local";
+            this.LocalFilme.Width = 164;
             // 
             // button4
             // 
@@ -271,6 +334,62 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "..::Pesquisar Filme::..";
             // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NomeFilmeP,
+            this.NomeDataP,
+            this.NomeLocalP});
+            listViewGroup10.Header = "Ação";
+            listViewGroup10.Name = "Ação";
+            listViewGroup11.Header = "Aventura";
+            listViewGroup11.Name = "Aventura";
+            listViewGroup12.Header = "Comédia";
+            listViewGroup12.Name = "Comédia";
+            listViewGroup13.Header = "Romance";
+            listViewGroup13.Name = "Romance";
+            listViewGroup14.Header = "Infantil";
+            listViewGroup14.Name = "Infantil";
+            listViewGroup15.Header = "Terror";
+            listViewGroup15.Name = "Terror";
+            listViewGroup16.Header = "Suspense";
+            listViewGroup16.Name = "Suspense";
+            listViewGroup17.Header = "Ficção - Científica";
+            listViewGroup17.Name = "Ficção - Científica";
+            listViewGroup18.Header = "Documentário";
+            listViewGroup18.Name = "Documentário";
+            this.listView2.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup10,
+            listViewGroup11,
+            listViewGroup12,
+            listViewGroup13,
+            listViewGroup14,
+            listViewGroup15,
+            listViewGroup16,
+            listViewGroup17,
+            listViewGroup18});
+            this.listView2.Location = new System.Drawing.Point(9, 199);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(648, 266);
+            this.listView2.TabIndex = 24;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // NomeFilmeP
+            // 
+            this.NomeFilmeP.Text = "Nome";
+            this.NomeFilmeP.Width = 242;
+            // 
+            // NomeDataP
+            // 
+            this.NomeDataP.Text = "Data";
+            this.NomeDataP.Width = 196;
+            // 
+            // NomeLocalP
+            // 
+            this.NomeLocalP.Text = "Local";
+            this.NomeLocalP.Width = 205;
+            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.White;
@@ -399,6 +518,18 @@
             this.cbd.Text = "Data";
             this.cbd.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button2.Location = new System.Drawing.Point(459, 141);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 30);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Filtrar";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // cbl
             // 
             this.cbl.AutoSize = true;
@@ -428,138 +559,6 @@
             this.cbnome.TabIndex = 0;
             this.cbnome.Text = "Nome";
             this.cbnome.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button2.Location = new System.Drawing.Point(459, 141);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 30);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Filtrar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.NomeFilme,
-            this.GeneroFilme,
-            this.DataFilme,
-            this.LocalFilme});
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            listViewGroup1.Header = "Ação";
-            listViewGroup1.Name = "Ação";
-            listViewGroup2.Header = "Aventura";
-            listViewGroup2.Name = "Aventura";
-            listViewGroup3.Header = "Comédia";
-            listViewGroup3.Name = "Comédia";
-            listViewGroup4.Header = "Romance";
-            listViewGroup4.Name = "Romance";
-            listViewGroup5.Header = "Infantil";
-            listViewGroup5.Name = "Infantil";
-            listViewGroup6.Header = "Terror";
-            listViewGroup6.Name = "Terror";
-            listViewGroup7.Header = "Suspense";
-            listViewGroup7.Name = "Suspense";
-            listViewGroup8.Header = "Ficção - Científica";
-            listViewGroup8.Name = "Ficção - Científica";
-            listViewGroup9.Header = "Documentário";
-            listViewGroup9.Name = "Documentário";
-            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8,
-            listViewGroup9});
-            this.listView1.Location = new System.Drawing.Point(9, 238);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(656, 227);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
-            // 
-            // NomeFilme
-            // 
-            this.NomeFilme.Text = "Nome";
-            this.NomeFilme.Width = 203;
-            // 
-            // GeneroFilme
-            // 
-            this.GeneroFilme.Text = "Gênero";
-            this.GeneroFilme.Width = 146;
-            // 
-            // DataFilme
-            // 
-            this.DataFilme.Text = "Data";
-            this.DataFilme.Width = 138;
-            // 
-            // LocalFilme
-            // 
-            this.LocalFilme.Text = "Local";
-            this.LocalFilme.Width = 164;
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.NomeFilmeP,
-            this.NomeDataP,
-            this.NomeLocalP});
-            listViewGroup10.Header = "Ação";
-            listViewGroup10.Name = "Ação";
-            listViewGroup11.Header = "Aventura";
-            listViewGroup11.Name = "Aventura";
-            listViewGroup12.Header = "Comédia";
-            listViewGroup12.Name = "Comédia";
-            listViewGroup13.Header = "Romance";
-            listViewGroup13.Name = "Romance";
-            listViewGroup14.Header = "Infantil";
-            listViewGroup14.Name = "Infantil";
-            listViewGroup15.Header = "Terror";
-            listViewGroup15.Name = "Terror";
-            listViewGroup16.Header = "Suspense";
-            listViewGroup16.Name = "Suspense";
-            listViewGroup17.Header = "Ficção - Científica";
-            listViewGroup17.Name = "Ficção - Científica";
-            listViewGroup18.Header = "Documentário";
-            listViewGroup18.Name = "Documentário";
-            this.listView2.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup10,
-            listViewGroup11,
-            listViewGroup12,
-            listViewGroup13,
-            listViewGroup14,
-            listViewGroup15,
-            listViewGroup16,
-            listViewGroup17,
-            listViewGroup18});
-            this.listView2.Location = new System.Drawing.Point(9, 199);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(648, 266);
-            this.listView2.TabIndex = 24;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
-            // 
-            // NomeFilmeP
-            // 
-            this.NomeFilmeP.Text = "Nome";
-            this.NomeFilmeP.Width = 242;
-            // 
-            // NomeDataP
-            // 
-            this.NomeDataP.Text = "Data";
-            this.NomeDataP.Width = 196;
-            // 
-            // NomeLocalP
-            // 
-            this.NomeLocalP.Text = "Local";
-            this.NomeLocalP.Width = 205;
             // 
             // Form1
             // 
@@ -611,9 +610,6 @@
         private System.Windows.Forms.TextBox txtnomep;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbd;
-        private System.Windows.Forms.CheckBox cbl;
-        private System.Windows.Forms.CheckBox cbg;
-        private System.Windows.Forms.CheckBox cbnome;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbgenerop;
         private System.Windows.Forms.Label label9;
@@ -625,6 +621,9 @@
         private System.Windows.Forms.ColumnHeader NomeFilmeP;
         private System.Windows.Forms.ColumnHeader NomeDataP;
         private System.Windows.Forms.ColumnHeader NomeLocalP;
+        private System.Windows.Forms.CheckBox cbl;
+        private System.Windows.Forms.CheckBox cbg;
+        private System.Windows.Forms.CheckBox cbnome;
     }
 }
 

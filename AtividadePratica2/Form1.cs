@@ -248,13 +248,13 @@ namespace AtividadePratica2
             button2.Enabled = false;
             if (cbgenerop.SelectedItem != null)
             {
-                //verifica se genero ja existe no dicionario, se existe entra , se nao retorna uma mensagem dizendo que o genero nao foi encontrado 
+               //condição que verifica se a a chave fornecida pelo usuario na hora da pesquisa é válida, se nao for válida, ele vai dizer  que nao existe filme cadastrado com este genero!
                 if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
                 {
-                    //pega os valores da chave do dicionario.
+                    //a lista pesqlist pega os valores da chave do meu dicionario
                     List<Filmes> pesqlist = Dicionario[cbgenerop.Text];
 
-                    //percorre cada filme ate que i < pesqlist 
+                    //laço que vai percorrer cada valor da chave do dicionario e vai adicionando os valores que contem em cada chave no objeto FE da classe Filmes, ele verifica se o checkbox da data da checado ou nao, se tiver ele verifica se o meu objeto contem as datas menores que a inicial que eu estou procurando, e se até aonde eu estou procurando a data do meu objeto é MENOR se for, ele tem que apresentar o filme que esta marcado, se nao ele simplismente pega os campos que tiverem preenchidos e faz a pesquisa e vai encontra cazo meu dicionario possua o filme, caso nao tenha ele vai retornar um valor vazio no list view 2 
                     for (int i = 0; i < pesqlist.Count; i++)
                     {
                         FE = new Filmes();
@@ -263,6 +263,7 @@ namespace AtividadePratica2
                         //se a data nao for checada entra no if, se nao vai para outra condição
                         if (cbd.Checked == false)
                         {
+                            //aqui ele faz a pesquisa por genero
                             if ((cbgenerop.SelectedItem.ToString() == FE.generofilme && txtnomep.Text == "" && txtlocalp.Text == ""))
                             {
                                 cobaia = FE;
@@ -305,7 +306,7 @@ namespace AtividadePratica2
                     }
                 }
                 else
-                    MessageBox.Show("Este genero não possui na sua Lista de Filmes", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Nao existe filme cadastrado com este tipo de genero", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
