@@ -442,9 +442,6 @@ namespace AtividadePratica2
         {
             listView2.Items.Clear();
             cbd.Checked = false;
-            cbnome.Checked = false;
-            cbg.Checked = false;
-            cbl.Checked = false;
             txtlocalp.Clear();
             txtnomep.Clear();
             cbgenerop.Text = null;

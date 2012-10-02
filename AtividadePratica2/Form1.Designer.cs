@@ -80,16 +80,11 @@
             this.txtlocalp = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtnomep = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbd = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.cbl = new System.Windows.Forms.CheckBox();
-            this.cbg = new System.Windows.Forms.CheckBox();
-            this.cbnome = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -313,6 +308,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.cbd);
             this.tabPage2.Controls.Add(this.listView2);
             this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.label10);
@@ -325,7 +321,6 @@
             this.tabPage2.Controls.Add(this.txtlocalp);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.txtnomep);
-            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -394,7 +389,7 @@
             // 
             this.button7.BackColor = System.Drawing.Color.White;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button7.Location = new System.Drawing.Point(561, 141);
+            this.button7.Location = new System.Drawing.Point(463, 84);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(96, 30);
             this.button7.TabIndex = 23;
@@ -495,23 +490,10 @@
             this.txtnomep.Size = new System.Drawing.Size(448, 20);
             this.txtnomep.TabIndex = 12;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cbd);
-            this.groupBox1.Controls.Add(this.cbl);
-            this.groupBox1.Controls.Add(this.cbg);
-            this.groupBox1.Controls.Add(this.cbnome);
-            this.groupBox1.Location = new System.Drawing.Point(473, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(169, 124);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Items de pesquisa:";
-            // 
             // cbd
             // 
             this.cbd.AutoSize = true;
-            this.cbd.Location = new System.Drawing.Point(102, 88);
+            this.cbd.Location = new System.Drawing.Point(463, 28);
             this.cbd.Name = "cbd";
             this.cbd.Size = new System.Drawing.Size(49, 17);
             this.cbd.TabIndex = 3;
@@ -522,43 +504,13 @@
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button2.Location = new System.Drawing.Point(459, 141);
+            this.button2.Location = new System.Drawing.Point(463, 48);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 30);
             this.button2.TabIndex = 10;
             this.button2.Text = "Filtrar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // cbl
-            // 
-            this.cbl.AutoSize = true;
-            this.cbl.Location = new System.Drawing.Point(6, 88);
-            this.cbl.Name = "cbl";
-            this.cbl.Size = new System.Drawing.Size(52, 17);
-            this.cbl.TabIndex = 2;
-            this.cbl.Text = "Local";
-            this.cbl.UseVisualStyleBackColor = true;
-            // 
-            // cbg
-            // 
-            this.cbg.AutoSize = true;
-            this.cbg.Location = new System.Drawing.Point(102, 38);
-            this.cbg.Name = "cbg";
-            this.cbg.Size = new System.Drawing.Size(61, 17);
-            this.cbg.TabIndex = 1;
-            this.cbg.Text = "Gênero";
-            this.cbg.UseVisualStyleBackColor = true;
-            // 
-            // cbnome
-            // 
-            this.cbnome.AutoSize = true;
-            this.cbnome.Location = new System.Drawing.Point(6, 38);
-            this.cbnome.Name = "cbnome";
-            this.cbnome.Size = new System.Drawing.Size(54, 17);
-            this.cbnome.TabIndex = 0;
-            this.cbnome.Text = "Nome";
-            this.cbnome.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -576,8 +528,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -608,7 +558,6 @@
         private System.Windows.Forms.TextBox txtlocalp;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtnomep;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbd;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbgenerop;
@@ -621,9 +570,6 @@
         private System.Windows.Forms.ColumnHeader NomeFilmeP;
         private System.Windows.Forms.ColumnHeader NomeDataP;
         private System.Windows.Forms.ColumnHeader NomeLocalP;
-        private System.Windows.Forms.CheckBox cbl;
-        private System.Windows.Forms.CheckBox cbg;
-        private System.Windows.Forms.CheckBox cbnome;
     }
 }
 
