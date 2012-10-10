@@ -127,23 +127,25 @@ namespace AtividadePratica2
         //BOTAO REMOVER
         private void button3_Click(object sender, EventArgs e)
         {
-
-            listafilmes = Dicionario[listView1.SelectedItems[0].Group.Header];
-            //remove os itens da lista
-            for (int i = 0; i < listafilmes.Count; i++)
-            {
-                Filmes encontrado = listafilmes[i];
-                if (encontrado.NomeFilme == listView1.SelectedItems[0].Text)
+           
+                listafilmes = Dicionario[listView1.SelectedItems[0].Group.Header];
+                //remove os itens da lista
+                for (int i = 0; i < listafilmes.Count; i++)
                 {
-                    listafilmes.Remove(encontrado);
+                    Filmes encontrado = listafilmes[i];
+                    if (encontrado.NomeFilme == listView1.SelectedItems[0].Text)
+                    {
+                        listafilmes.Remove(encontrado);
+                    }
                 }
-            }
-            //O laço vai percorrer a lista, e quando encontrar o item selecionado irá removelo do ListView
-            for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
-            {
-                ListViewItem remove = listView1.SelectedItems[i];
-                listView1.Items.Remove(remove);
-            }
+                //O laço vai percorrer a lista, e quando encontrar o item selecionado irá removelo do ListView
+                for (int i = listView1.SelectedItems.Count - 1; i >= 0; --i)
+                {
+                    ListViewItem remove = listView1.SelectedItems[i];
+                    listView1.Items.Remove(remove);
+
+                }
+        
 
         }
 
@@ -447,6 +449,11 @@ namespace AtividadePratica2
             cbgenerop.Text = null;
             //ListaPesquisaTOTAL.Clear();
             button2.Enabled = true;
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
 
         }
     }
