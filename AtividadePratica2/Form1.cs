@@ -34,11 +34,32 @@ namespace AtividadePratica2
 
             if (txtnome.Text == "" || textBox1.Text == "" || cbGenero.Text == "")
             {
-                MessageBox.Show("Preencha todos os campos", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (Control c in tabPage1.Controls)
+                {
+                    if (c is TextBox)
+                    {
+                        TextBox t = (TextBox)c;
+                        if (t.Text == "")
+                        {
+                            errorProvider1.SetError(t, "*Campo obrigatório");
+                        }
+                    }
+                }
+                foreach (Control c in tabPage1.Controls)
+                {
+                    if (c is ComboBox)
+                    {
+                        ComboBox t = (ComboBox)c;
+                        if (t.Text == "")
+                        {
+                            errorProvider1.SetError(t, "*Campo obrigatório");
+                        }
+                    }
+                }
             }
             else
             {
-
+                errorProvider1.Clear();
                 //usar um método do dicionario para verificar se a lista ja esta la!
                 //usar a chave do dicionario para esta verificação!!!!
                 //List<Filmes> lista = new List<Filmes>();
@@ -202,10 +223,11 @@ namespace AtividadePratica2
                 textBox1.Text = listView1.FocusedItem.SubItems[3].Text;
                 
                 cbGenero.Text = listView1.SelectedItems[0].Group.Header;
-
+                
             }
         }
 
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -227,6 +249,33 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (txtnomep.Text == "" && txtlocalp.Text == "" && cbgenerop.Text == "")
+            {
+                button2.Enabled = true;
+            }
+            foreach (Control c in tabPage2.Controls)
+            {
+                if (c is TextBox)
+                {
+                    TextBox t = (TextBox)c;
+                    if (t.Text == "")
+                    {
+                        errorProvider1.SetError(t, "*Campo obrigatório");
+                    }
+                }
+            }
+            foreach (Control c in tabPage2.Controls)
+            {
+                if (c is ComboBox)
+                {
+                    ComboBox t = (ComboBox)c;
+                    if (t.Text == "")
+                    {
+                        errorProvider1.SetError(t, "*Campo obrigatório");
+                    }
+                }
+            }
+            
             button2.Enabled = false;
             if (cbgenerop.SelectedItem != null)
             {
@@ -356,11 +405,9 @@ namespace AtividadePratica2
         //BOTAO LIMPAR
         private void button7_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             listView2.Items.Clear();
             cbd.Checked = false;
-            txtlocalp.Clear();
-            txtnomep.Clear();
-            cbgenerop.Text = null;
             //ListaPesquisaTOTAL.Clear();
             button2.Enabled = true;
 
