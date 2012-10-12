@@ -30,6 +30,7 @@ namespace AtividadePratica2
         //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
         {
+            
             Filmes filme = new Filmes();
 
             if (txtnome.Text == "" || textBox1.Text == "" || cbGenero.Text == "")
@@ -43,6 +44,10 @@ namespace AtividadePratica2
                         {
                             errorProvider1.SetError(t, "*Campo obrigatório");
                         }
+                        else
+                        {
+                            errorProvider1.SetError(t, "");
+                        }
                     }
                 }
                 foreach (Control c in tabPage1.Controls)
@@ -53,6 +58,10 @@ namespace AtividadePratica2
                         if (t.Text == "")
                         {
                             errorProvider1.SetError(t, "*Campo obrigatório");
+                        }
+                        else
+                        {
+                            errorProvider1.SetError(t, "");
                         }
                     }
                 }
@@ -103,6 +112,7 @@ namespace AtividadePratica2
                 //Método criado para limpar campos.
 
                 limpar();
+                button3.Enabled = true;
             }
         }
 
@@ -119,10 +129,7 @@ namespace AtividadePratica2
             ap.SubItems.Add(cobaia.DATA.ToShortDateString());
             ap.SubItems.Add(cobaia.local);
            
-            
-            //lf.SubItems[0].Text = cbgenerop.Text;
-            //lf.SubItems[1].Text = (cobaia.DATA.ToShortDateString());
-            //lf.SubItems[2].Text = cobaia.local;
+           
         }
 
 
@@ -249,37 +256,10 @@ namespace AtividadePratica2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (txtnomep.Text == "" && txtlocalp.Text == "" && cbgenerop.Text == "")
-            {
-                button2.Enabled = true;
-            }
-            foreach (Control c in tabPage2.Controls)
-            {
-                if (c is TextBox)
-                {
-                    TextBox t = (TextBox)c;
-                    if (t.Text == "")
-                    {
-                        errorProvider1.SetError(t, "*Campo obrigatório");
-                    }
-                }
-            }
-            foreach (Control c in tabPage2.Controls)
-            {
-                if (c is ComboBox)
-                {
-                    ComboBox t = (ComboBox)c;
-                    if (t.Text == "")
-                    {
-                        errorProvider1.SetError(t, "*Campo obrigatório");
-                    }
-                }
-            }
-            
             button2.Enabled = false;
             if (cbgenerop.SelectedItem != null)
             {
-               //condição que verifica se a a chave fornecida pelo usuario na hora da pesquisa é válida, se nao for válida, ele vai dizer  que nao existe filme cadastrado com este genero!
+                //condição que verifica se a a chave fornecida pelo usuario na hora da pesquisa é válida, se nao for válida, ele vai dizer  que nao existe filme cadastrado com este genero!
                 if (Dicionario.ContainsKey(cbgenerop.SelectedItem.ToString()))
                 {
                     //a lista pesqlist pega os valores da chave do meu dicionario
@@ -395,8 +375,8 @@ namespace AtividadePratica2
                     }
                 }
             }
-
         }
+        
 
 
       
@@ -415,7 +395,7 @@ namespace AtividadePratica2
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-
+            button3.Enabled = false;
         }
     }
 }
