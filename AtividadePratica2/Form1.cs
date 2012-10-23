@@ -26,7 +26,7 @@ namespace AtividadePratica2
         Filmes encontrado;
         Filmes FE;
         List<Filmes> ListaPesquisaTOTAL = new List<Filmes>();
-
+        
         //Método usado para armazenamento dos filmes no listView1
         public void Adicionar()
         {
@@ -112,7 +112,7 @@ namespace AtividadePratica2
                 //Método criado para limpar campos.
 
                 limpar();
-                button3.Enabled = true;
+                
             }
         }
 
@@ -155,7 +155,10 @@ namespace AtividadePratica2
         //BOTAO REMOVER
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            if (listView1.Items.Count <= 0)
+            {
+                button3.Enabled = false;
+            }
                 listafilmes = Dicionario[listView1.SelectedItems[0].Group.Header];
                 //remove os itens da lista
                 for (int i = 0; i < listafilmes.Count; i++)
@@ -173,7 +176,7 @@ namespace AtividadePratica2
                     listView1.Items.Remove(remove);
 
                 }
-        
+                button3.Enabled = false;
 
         }
 
@@ -395,7 +398,22 @@ namespace AtividadePratica2
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            button3.Enabled = false;
+            if (listView1.Items.Count <= 0)
+            {
+                button3.Enabled = false;
+            }
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listView1.SelectedItems.Count != 0)
+            {
+                button3.Enabled = true;
+            }
+            else
+            {
+                button3.Enabled = false; ;
+            }
         }
     }
 }
